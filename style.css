@@ -351,3 +351,14 @@ p {
             cursor: pointer;
             margin-top: 20px;
         }
+
+/* Para sa Mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Itago ang sidebar o gawing dropdown */
+    }
+    
+    .title-text {
+        font-size: 1.2rem; /* Paliitin ang text para kumasya */
+    }
+}
