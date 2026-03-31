@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination in City of Tayabas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+   <div class="card text-bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+        <div class="container-fluid">
+           
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="Logo" width="150" height="100" class="img-fluid">
+            </a>
+                       
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dct.html">Tourist Destination</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper">
+    <aside class="sidebar">
+        <ul>
+            <li onclick="showCategory('festivals')">Feast and Festival</li>
+            <li onclick="showCategory('mustbuy')">Must Buy</li>
+            <li onclick="showCategory('musteat')">Must Eat & Drink</li>
+            <li onclick="showCategory('thingsdo')">Things To Do</li>
+            <li onclick="showCategory('remember')">Things To Remember</li>
+            <li onclick="showCategory('places')">Places To Visit</li>
+        </ul>
+    </aside>
+
+    <main id="display-area" class="main-content">
+    </main>
+</div>
+
+<script>
+    const displayArea = document.getElementById('display-area');
+
+    function showCategory(type) {
+        let title = "";
+        let items = "";
+
+        if (type === 'festivals') {
+            title = "Feast and Festival";
+            items = `
+                <div class="list-item" onclick="showDetails('tay-tsinoy', 'festivals')">Tay Tsinoy Festival</div>
+                <div class="list-item" onclick="showDetails('viernes', 'festivals')">Viernes Dolores De Turumba</div>
+                <div class="list-item" onclick="showDetails('buen-camino', 'festivals')">Buen Camino</div>
+                <div class="list-item" onclick="showDetails('senakulo', 'festivals')">Senakulo</div>
+                <div class="list-item" onclick="showDetails('mayohan', 'festivals')">Mayohan Festival</div>
+            `;
+        } else if (type === 'mustbuy') {
+            title = "Must Buy";
+            items = `<div class="list-item" onclick="showDetails('budin', 'mustbuy')">Budin</div>
+              <div class="list-item" onclick="showDetails('Yema Ckae', 'mustbuy')">Yema Cake</div>
+                <div class="list-item" onclick="showDetails('Minukmok', 'mustbuy')">Minukmok</div>
+                <div class="list-item" onclick="showDetails('Suman', 'mustbuy')">Suman</div>
+                <div class="list-item" onclick="showDetails('Handicrafts', 'mustbuy')">Handicrafts</div>`;
+
+        } else if (type === 'musteat') {
+            title = "Must Eat & Drink";
+            items = `<div class="list-item" onclick="showDetails('Lambanog', 'musteat')">Lambanog</div>
+            <div class="list-item" onclick="showDetails('Seafood Kare-Kare', 'musteat')">Seafood Kare-Kare</div>
+              <div class="list-item" onclick="showDetails('Buko de Halo-Halo', 'musteat')">Buko de Halo-Halo</div>
+                <div class="list-item" onclick="showDetails('Pinais', 'musteat')">Pinais</div>
+                <div class="list-item" onclick="showDetails('Sinugno', 'musteat')">Sinugno</div>
+                <div class="list-item" onclick="showDetails('Delinong Manok', 'musteat')">Delinong Manok</div>
+                     <div class="list-item" onclick="showDetails('Bibingka', 'musteat')">Bibingka</div>
+                      <div class="list-item" onclick="showDetails('Balul-Balul / Pilipit', 'musteat')">Balul-Balul / Pilipit</div>`;
+
+        } else if (type === 'thingsdo') {
+            title = "Things To Do";
+            items = `<div class="list-item" onclick="showDetails('Tayabas City Hood', 'thingsdo')">Tayabas City Hood</div>
+                     <div class="list-item" onclick="showDetails('Araw ng Tayabas', 'thingsdo')">Araw ng Tayabas</div>
+                     <div class="list-item" onclick="showDetails('Feast of St. Michael the Archangel', 'thingsdo')">Feast of St. Michael the Archangel</div>
+                     <div class="list-item" onclick="showDetails('Backpack Venture', 'thingsdo')">Backpack Venture</div>
+                     <div class="list-item" onclick="showDetails('Staycation', 'thingsdo')">Staycation</div>
+                     <div class="list-item" onclick="showDetails('Food Feasting', 'thingsdo')">Food Feasting</div>
+                     <div class="list-item" onclick="showDetails('Visita Iglesia', 'thingsdo')">Visita Iglesia</div>
+                     <div class="list-item" onclick="showDetails('Shop at Calle Budin', 'thingsdo')">Shop at Calle Budin</div>`;
+                   
+         } else if (type === 'remember') {
+            title = "Things To Remember";
+            items = `<div class="list-item" onclick="showDetails('Tagayan Ritual', 'remember')">Tagayan Ritual</div>
+                     <div class="list-item" onclick="showDetails(' St. Michael the Archangel Blessing', 'remember')"> St. Michael the Archangel Blessing</div>
+                     <div class="list-item" onclick="showDetails('Tabi po Nuno', 'remember')">Tabi po Nuno</div>
+                     <div class="list-item" onclick="showDetails('Bring Sweater / Jacket and Umbrella', 'remember')">Bring Sweater / Jacket and Umbrella</div>
+                     <div class="list-item" onclick="showDetails('#Lungsodnainyongmaipagmamalaki', 'remember')">#Lungsodnainyongmaipagmamalaki</div>`;
+        } else {
+            title = "Place To Visit";
+            items = `  <div class="list-item" onclick="showDetails('Air Summit Gourmet', 'places')">Air Summit Gourmet</div>
+            <div class="list-item" onclick="showDetails('casa', 'places')">Casa Comunidad de Tayabas</div>
+             <div class="list-item" onclick="showDetails('Habilin Farm', 'places')">Habilin Farm</div>
+              <div class="list-item" onclick="showDetails('Hunta Cafe', 'places')">Hunta Cafe</div>
+               <div class="list-item" onclick="showDetails('Juans Famous Buko de Halo-Halo', 'places')">Juans Famous Buko de Halo-Halo</div>
+                <div class="list-item" onclick="showDetails('Kamayan sa Palaisdaan', 'places')">Kamayan sa Palaisdaan</div>
+                 <div class="list-item" onclick="showDetails('Lambanog Distilleries', 'places')">Lambanog Distilleries</div>
+                  <div class="list-item" onclick="showDetails('Mainit Hotspring', 'places')">Mainit Hotspring</div>
+                   <div class="list-item" onclick="showDetails('basilica', 'places')">Minor Basilica of St. Michael the Archangel</div>
+                     <div class="list-item" onclick="showDetails('Mortuario de Cementerio para Los Indios', 'places')">Mortuario de Cementerio para Los Indios</div>
+                       <div class="list-item" onclick="showDetails('Mothers Wonderland', 'places')">Mothers Wonderland</div>
+                        <div class="list-item" onclick="showDetails('Nawawalang Paraiso Resort & Hotel', 'places')">Nawawalang Paraiso Resort & Hotel</div>
+                        <div class="list-item" onclick="showDetails('Puerto Serene', 'places')">Puerto Serene</div>
+                        <div class="list-item" onclick="showDetails('Santuario de Las Almas', 'places')">Santuario de Las Almas</div>
+                        <div class="list-item" onclick="showDetails('Yumis Farm', 'places')">Yumis Farm</div>
+                     <div class="list-item" onclick="showDetails('Puente de Malagonlong', 'places')">Puente de Malagonlong</div>                     
+                     <div class="list-item" onclick="showDetails('Maria Nature Park', 'places')">Maria Nature Park</div>
+                     <div class="list-item" onclick="showDetails('Semara', 'places')">Semara</div>
+                     <div class="list-item" onclick="showDetails('Bente Pools', 'places')">Bente Pools</div>
+                     <div class="list-item" onclick="showDetails('Sireyo', 'places')">Sireyo</div>
+   <div class="list-item" onclick="showDetails('Jonas Creamy Halo Halo and Restaurant', 'places')">Jonas Creamy Halo Halo and Restaurant</div> `;
+        } 
+
+        displayArea.innerHTML = `
+            <h1 class="category-title">${title}</h1>
+            <div class="list-container">${items}</div>
+        `;
+    }
+
+    function showDetails(item, category) {
+        let content = "";
+
+       // festivals
+        if (item === 'tay-tsinoy') {
+            content = `
+                <h1 style="color: #0c1e31;">Tay Tsinoy Festival</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Tay Tsinoy Festival.jpg" alt="Tay Tsinoy"></div>
+                    <div class="info-box">
+                        <p>The TayTsinoy Festival in Tayabas City, Quezon, celebrates the rich Filipino-Chinese (Tsinoy) heritage,
+                             honoring early Chinese settlers and their cultural contributions through vibrant events held every January
+                              or February, often aligning with the Chinese Lunar New Year around February 2-5. It features lively parades
+                               with dragons and lions marching through Rizal Park and Poblacion, alongside fun contests like Chinese garter,
+                                kiamoy eating races, chopstick pancit habhab challenges, and the Binibining TayTsinoy pageant, blending local 
+                                traditions with Chinese customs to foster community ties and entertain crowds, especially children, in a festive 
+                                atmosphere of learning and merriment. </p>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <div class="map-box">
+                        <strong>location for event</strong>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d967.7200661369777!2d121.59132467531457!3d14.
+                       025110998085013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7d18f39c07%3A0x98737b85229c979e!2sOld%20
+                       Tayabas%20City%20Hall!5e0!3m2!1sen!2sph!4v1769221211038!5m2!1sen!2sph"
+                        width="400" 
+                        height="250" 
+                        style="border:0;"
+                         allowfullscreen=""
+                          loading="lazy" 
+                          referrerpolicy="no-referrer-when-downgrade">
+                          </iframe>
+                    </div>
+                </div>
+               
+            `;
+        } 
+        else if (item === 'viernes') {
+            content = `
+                <h1 style="color:#0c1e31;">Viernes Dolores De Turumba</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Viernes Dolores De Turumbaa.webp" alt="Viernes Dolores De Turumba"></div>
+                    <div class="info-box">
+                        <p>Viernes de Dolores de Turumba is a lively religious festival in Tayabas City, Quezon, honoring Our Lady 
+                            of Sorrows (Nuestra Señora de los Dolores de Turumba) on the Friday before Palm Sunday during Lent, 
+                            typically in March or April, where devotees perform rhythmic Turumba dances, joyful chants like "Awit
+                             ng Turumba," and colorful processions around the Tayabas Basilica or nearby shrines, blending penance
+                              with folk performances featuring white-clad angels and cherubim.</p>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <div class="map-box">
+                        <strong>location for event</strong>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.8411675127263!2d121.
+                        58776737506578!3d14.027427540852441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7d88f
+                        728c1%3A0x41aca5808ed04d1c!2sErmita%20Church%2C%20City%20of%20Tayabas%2C%204327%20Quezon!5e0!3m2!1sen!
+                        2sph!4v1769221607928!5m2!1sen!2sph" 
+                        width="400" 
+                        height="250"
+                         style="border:0;" 
+                         allowfullscreen=""
+                          loading="lazy"
+                           referrerpolicy="no-referrer-when-downgrade">
+                           </iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+         else if (item === 'buen-camino') {
+            content = `
+                <h1 style="color: #0c1e31; ">Buen Camino</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="buen camino.jpg" alt="Buen Camino"></div>
+                    <div class="info-box">
+                        <p>This is a sacred and holy act done during the Lenten Season where religious images are displayed along Quezon Avenue,
+                             the usual route going to Kamay ni Hesus, where people practice "Alay-Lakad". This act is done to greet pilgrims
+                              "Buen Camino" which means "Mapagpalang Paglalakbay" as they go on their way.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>location for event:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d967.7197497027516!2d121.59397006955002!3d14.
+                       025186000275568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d62cf1ebe19%3A0xb5d4f7a4fff3153c!2s314%2
+                       0Quezon%20Ave%2C%20City%20of%20Tayabas%2C%204327%20Quezon!5e0!3m2!1sen!2sph!4v1769222427871!5m2!1sen!2sph" 
+                       width="400" 
+                       height="250" 
+                       style="border:0;" 
+                       allowfullscreen="" 
+                       loading="lazy" 
+                       referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+         else if (item === 'senakulo') {
+            content = `
+                <h1 style="color:#0c1e31;">Senakulo</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Senakulo.jpg" alt="Senakulo"></div>
+                    <div class="info-box">
+                        <p>Senakulo is a traditional Filipino passion play performed during Holy Week in Tayabas City, Quezon, 
+                            reenacting the life, suffering, death, and resurrection of Jesus Christ within the Poblacion and the
+                             Minor Basilica of St. Michael the Archangel. Organized by groups like Sining Tayabasin, it features 
+                             dramatic scenes such as Jesus' entry into Jerusalem, the Last Supper, trial, flagellation, carrying 
+                             of the cross, crucifixion, and Mary's vigil, blending artistry, faith, and community craftsmanship in
+                              town plazas or streets. This communal event, part of Tayabas' rich Lenten traditions alongside Buen 
+                              Camino and Alay Lakad, draws locals and visitors for its vivid portrayal of Christ's Passion during Semana Santa.</p>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <div class="map-box">
+                        <strong>location for event</strong>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247806.10540499105!2d121.
+                        27743122812498!3d13.96036776257713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7d0753897
+                        f%3A0xe0dda9263f349499!2sMinor%20Basilica%20of%20St.%20Michael%20the%20Archangel!5e0!3m2!1sen!2sph!4v1769222537870!5m2!1sen                !2sph" 
+                        width="400" 
+                        height="250" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                         referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+        
+ else if (item === 'mayohan') {
+            content = `
+                <h1 style="color: #0c1e31; ">Mayohan Festival</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="mayohan-festival.jpg" alt="Mayohan Festival"></div>
+                    <div class="info-box">
+                        <p>Mayohan Festival is a vibrant cultural and religious celebration in Tayabas City, Quezon, held from the
+                             second to third week of May, peaking on May 15 a special nonworking holiday—honoring St. Isidro Labrador, 
+                             the patron saint of farmers, with thanksgiving for bountiful harvests. Homes and streets transform into 
+                             colorful displays of vegetables, fruits, rice stalks, flowers, hats, and arches called salu-salo, judged 
+                             for creativity during grand parades, followed by the iconic hagisan or agawan ng suman, where residents 
+                             joyfully throw rice cakes, food, gifts, and even money to crowds following the saint's procession.
+                              The week-long event features traditional games like juego de anillo, beauty pageants, culinary 
+                              contests, sports, cultural shows, and fireworks, launched in 1989 to boost tourism and showcase Tayabas' heritage.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>location for event</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d967.7200661369777!2d121.59132467531457!3d14.
+                       025110998085013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7d18f39c07%3A0x98737b85229c979e!2sOld%20
+                       Tayabas%20City%20Hall!5e0!3m2!1sen!2sph!4v1769221211038!5m2!1sen!2sph"
+                        width="400" 
+                        height="250" 
+                        style="border:0;"
+                         allowfullscreen=""
+                          loading="lazy" 
+                          referrerpolicy="no-referrer-when-downgrade">
+                          </iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+// must buy
+
+ else if (item === 'budin') {
+            content = `
+                <h1 style="color: #0c1e31; ">Budin</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Budin.jpg" alt="Budin"></div>
+                    <div class="info-box">
+                        <p>Mayohan Festival is a vibrant cultural and religious celebration in Tayabas City, Quezon, held from the
+                             second to third week of May, peaking on May 15 a special nonworking holiday—honoring St. Isidro Labrador, 
+                             the patron saint of farmers, with thanksgiving for bountiful harvests. Homes and streets transform into 
+                             colorful displays of vegetables, fruits, rice stalks, flowers, hats, and arches called salu-salo, judged 
+                             for creativity during grand parades, followed by the iconic hagisan or agawan ng suman, where residents 
+                             joyfully throw rice cakes, food, gifts, and even money to crowds following the saint's procession.
+                              The week-long event features traditional games like juego de anillo, beauty pageants, culinary 
+                              contests, sports, cultural shows, and fireworks, launched in 1989 to boost tourism and showcase Tayabas' heritage.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d575.4084988226402!2d121.59374815175373!3d14.
+                       02562727458393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4db2d2cd028f%3A0x93d98202f577a248!2sCORA&#39
+                       ;S%20SPECIAL%20BUDIN%20AND%20PASALUBONG!5e0!3m2!1sen!2sph!4v1769222768922!5m2!1sen!2sph"
+                        width="300"
+                         height="250"
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                         referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+         else if (item === 'Yema Ckae') {
+            content = `
+                <h1 style="color: #0c1e31; ">Yema Ckae</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Yema Cake.jpg" alt="Yema Ckae"></div>
+                    <div class="info-box">
+                        <p>Yema Cake is an iconic dessert from Tayabas City, Quezon, popularized by Rodillas Yema Cake at Monica and
+                             Jett Bakeshop, featuring two layers of soft, fluffy chiffon sponge cake topped with rich, creamy yema
+                              frosting made from egg yolks, sugar, condensed milk, and butter for a sweet, custardy delight. A favorite pasalubong 
+                              (souvenir treat), it gained massive fame during the 2024 Yemayohan event at Mayohan Festival, where 1,400 cakes 
+                              formed a record-breaking 175-meter-long serving shared by locals and tourists. Available at branches in Quezon Avenue, 
+                              Tayabas, and Metro Manila spots like Makati, its melt-in-your-mouth texture makes it a must-try alongside local sweets
+                               like budin.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30965.90929800506!2d121.5871999753577!
+                       3d14.03349931234671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd5286b759d731%3A0xcc7797c8c63c6f!
+                       2sRodillas%20Yema%20Cake!5e0!3m2!1sen!2sph!4v1769222940622!5m2!1sen!2sph" 
+                       width="300"
+                        height="250" 
+                        style="border:0;"
+                         allowfullscreen=""
+                          loading="lazy"
+                           referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+         else if (item === 'Minukmok') {
+            content = `
+                <h1 style="color: #0c1e31; ">Minukmok</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="minukmok.jpg" alt="Minukmok"></div>
+                    <div class="info-box">
+                        <p>Minukmok is a traditional Filipino delicacy from Quezon Province, particularly Tayabas, made by boiling and mashing 
+                            cassava (kamoteng kahoy) until smooth, then mixing it with butter or margarine, sweetened condensed milk or sugar for 
+                            a sticky, sweet consistency, often topped with grated coconut or cheese and served on banana leaves as a chewy kakanin
+                             snack. Similar to nilupak, it highlights the region's cassava abundance and pairs well with other local sweets like budin
+                              during festivals such as Mayohan. This simple, pounded treat embodies rural Quezon flavors, enjoyed fresh from street 
+                              vendors near markets.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d575.4084988226402!2d121.59374815175373!3d14.
+                       02562727458393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4db2d2cd028f%3A0x93d98202f577a248!2sCORA&#39
+                       ;S%20SPECIAL%20BUDIN%20AND%20PASALUBONG!5e0!3m2!1sen!2sph!4v1769222768922!5m2!1sen!2sph"
+                        width="300"
+                         height="250"
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                         referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+         else if (item === 'Suman') {
+            content = `
+                <h1 style="color: #0c1e31; ">Suman</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Suman.jpg" alt="Suman"></div>
+                    <div class="info-box">
+                        <p>Suman is a cherished Filipino rice cake delicacy from Quezon Province, including Tayabas, made from glutinous rice soaked, 
+                            cooked in sweetened coconut milk (gata), wrapped in woven banana leaves or coconut fronds, and steamed to a sticky,
+                             aromatic perfection. Often enjoyed as a snack, breakfast, or pasalubong, it's paired with latik (toasted coconut curd)
+                              or sugar syrup, featuring local variants like bite-sized Suman Infanta during festivals such as Mayohan where it's
+                               thrown in the lively agawan ng suman tradition. This simple yet flavorful kakanin highlights Quezon's agricultural
+                                bounty alongside sweets like budin and yema cake.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d575.4084988226402!2d121.59374815175373!3d14.
+                       02562727458393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4db2d2cd028f%3A0x93d98202f577a248!2sCORA&#39
+                       ;S%20SPECIAL%20BUDIN%20AND%20PASALUBONG!5e0!3m2!1sen!2sph!4v1769222768922!5m2!1sen!2sph"
+                        width="300"
+                         height="250"
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                         referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+         else if (item === 'Handicrafts') {
+            content = `
+                <h1 style="color: #0c1e31; ">Handicrafts</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Handicrafts.jpg" alt="Handicrafts"></div>
+                    <div class="info-box">
+                        <p>Yema Cake is an iconic dessert from Tayabas City, Quezon, popularized by Rodillas Yema Cake at Monica and
+                             Jett Bakeshop, featuring two layers of soft, fluffy chiffon sponge cake topped with rich, creamy yema
+                              frosting made from egg yolks, sugar, condensed milk, and butter for a sweet, custardy delight. A favorite pasalubong 
+                              (souvenir treat), it gained massive fame during the 2024 Yemayohan event at Mayohan Festival, where 1,400 cakes 
+                              formed a record-breaking 175-meter-long serving shared by locals and tourists. Available at branches in Quezon Avenue, 
+                              Tayabas, and Metro Manila spots like Makati, its melt-in-your-mouth texture makes it a must-try alongside local sweets
+                               like budin.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.87044494311!2d121.58696767974271!3d14.
+                      025692855836738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4da1c8997dfd%3A0x93b549f2c46fddca!2sCasa%20
+                      Comunidad%20De%20Tayabas!5e0!3m2!1sen!2sph!4v1769223121014!5m2!1sen!2sph" 
+                      width="300" 
+                      height="250" 
+                      style="border:0;"
+                       allowfullscreen=""
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+        //must est & drinks
+
+          else if (item === 'Lambanog') {
+            content = `
+                <h1 style="color: #0c1e31; ">Lambanog</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Lambanog.jpg" alt="Lambanog"></div>
+                    <div class="info-box">
+                        <p>Lambanog is a potent traditional Filipino distilled spirit from Quezon Province, particularly Tayabas, dubbed 
+                            the "Lambanog Capital," made by fermenting and distilling sap (tuba) from unopened coconut palm flowers into
+                             a clear, colorless liquor reaching 80-95 proof, often aged or flavored with fruits like raisins, strawberries,
+                              or sappan wood for unique tastes. Produced by small-scale distilleries such as Mallari, Buncayo, and Capistrano,
+                               it's enjoyed straight in communal tagayan gatherings with guitar music, mixed in cocktails, or as pasalubong,
+                                embodying Quezon's coconut heritage alongside festivals like Mayohan. This "coconut vodka" or "Philippine tequila"
+                                 pairs well with local sweets like budin and suman, though caution is advised due to its deceptive strength.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.875080911791!2d121.58753627974271!
+                      3d14.025418155843838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7d17038f59%3A0xd8db5ad689c67068!
+                      2sMallari%20Distillery!5e0!3m2!1sen!2sph!4v1769223240318!5m2!1sen!2sph"
+                       width="300" 
+                       height="250" 
+                       style="border:0;"
+                        allowfullscreen="" 
+                        loading="lazy"
+                         referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+          else if (item === 'Seafood Kare-Kare') {
+            content = `
+                <h1 style="color: #0c1e31; ">Seafood Kare-Kare</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Seafood Kare-Kare.jpg" alt="Seafood Kare-Kare"></div>
+                    <div class="info-box">
+                        <p>Seafood Kare-Kare is a Filipino seafood adaptation of the classic Kare-Kare stew, featuring shrimp, 
+                            squid, mussels, and crabs simmered in a thick, savory peanut sauce enriched with coconut milk, peanut 
+                            butter, annatto for color, and vegetables like eggplant, string beans, and bok choy. Originating from
+                             the traditional oxtail-based dish, this lighter version highlights fresh seafood flavors while maintaining 
+                             the signature sweet-salty profile, often prepared for special occasions or Lenten meals when red meat is
+                              avoided. Best served hot with bagoong alamang (shrimp paste) on the side and steamed rice, it pairs well 
+                              with Tayabas' festive vibe during Holy Week traditions.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d813.625539393706!2d121.57214997180752!3d14.
+                       060806270381189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d77a3ce2367%3A0x4c593e58acff50b6
+                       !2sKamayan%20sa%20Palaisdaan!5e0!3m2!1sen!2sph!4v1769223342199!5m2!1sen!2sph" 
+                       width="300" 
+                       height="250" 
+                       style="border:0;"
+                        allowfullscreen=""
+                         loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+          else if (item === 'Buko de Halo-Halo') {
+            content = `
+                <h1 style="color: #0c1e31; ">Buko de Halo-Halo</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Buko de Halo-Halo.jpg" alt="Buko de Halo-Halo"></div>
+                    <div class="info-box">
+                        <p>Buko de Halo-Halo is a refreshing Filipino shaved ice dessert variation served in a fresh young 
+                            coconut shell (buko), featuring layers of sweetened fruits like kaong, nata de coco, macapuno, 
+                            langka, saba bananas, red mung beans, garbanzos, ube halaya, and leche flan, topped with crushed ice, 
+                            evaporated milk, and often condensed milk or ice cream for a creamy, colorful mix. This tropical treat,
+                             popular in Quezon Province including Tayabas, embodies summer indulgence by blending the natural sweetness
+                              of buko strips with assorted jellies, beans, and root crops, mixed ("halo") tableside for a slushy delight
+                               that pairs well with local sweets like budin during festivals.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.192721418448!2d121.62756237506555!
+                       3d14.006584091343763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a2b3efadf5e65d%3A0x70407332a8864c03!2sJuan&#39;
+                       s%20Famous%20Buko%20de%20Halo-Halo!5e0!3m2!1sen!2sph!4v1769223438145!5m2!1sen!2sph"
+                        width="300" 
+                        height="250" 
+                        style="border:0;"
+                         allowfullscreen=""
+                          loading="lazy" 
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+          else if (item === 'Pinais') {
+            content = `
+                <h1 style="color: #0c1e31; ">Pinais</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Pinais.webp" alt="Pinais"></div>
+                    <div class="info-box">
+                        <p>Pinais na Hipon is a traditional Southern Tagalog delicacy from Quezon Province, including Tayabas, 
+                            where chopped freshwater shrimp or small fish, pork, grated young coconut meat, garlic, onions, and
+                             seasonings are wrapped in banana leaves (sometimes kamamba leaves for aroma) and slowly steamed or 
+                             simmered in rich coconut milk or water with sour kamias for a tender, flavorful dish. This heirloom 
+                             recipe seals in juices for a creamy, aromatic result best enjoyed with steamed rice, highlighting Quezon's 
+                             coastal abundance alongside festival fare like suman and lambanog.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d813.625539393706!2d121.57214997180752!3d14.
+                       060806270381189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d77a3ce2367%3A0x4c593e58acff50b6
+                       !2sKamayan%20sa%20Palaisdaan!5e0!3m2!1sen!2sph!4v1769223342199!5m2!1sen!2sph" 
+                       width="300" 
+                       height="250" 
+                       style="border:0;"
+                        allowfullscreen=""
+                         loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+          else if (item === 'Sinugno') {
+            content = `
+                <h1 style="color: #0c1e31; ">Sinugno</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Sinugno.webp" alt="Sinugno"></div>
+                    <div class="info-box">
+                        <p>Sinugno is a flavorful Filipino dish from Quezon Province, including Tayabas, featuring grilled tilapia 
+                            (or similar fish) simmered in creamy coconut milk with ginger, garlic, onions, long green chilies, 
+                            fish sauce, and leafy greens like bok choy or malunggay for a smoky, savory balance. This comforting 
+                            staple highlights the region's coconut abundance, distinct from stuffed sinanglay by its simpler 
+                            grilling-then-stewing method, perfect over rice during family meals or festivals like Mayohan.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d813.625539393706!2d121.57214997180752!3d14.
+                       060806270381189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d77a3ce2367%3A0x4c593e58acff50b6
+                       !2sKamayan%20sa%20Palaisdaan!5e0!3m2!1sen!2sph!4v1769223342199!5m2!1sen!2sph" 
+                       width="300" 
+                       height="250" 
+                       style="border:0;"
+                        allowfullscreen=""
+                         loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+          else if (item === 'Delinong Manok') {
+            content = `
+                <h1 style="color: #0c1e31; ">Delinong Manok</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Delinong Manok.jpg" alt="Delinong Manok"></div>
+                    <div class="info-box">
+                        <p>Delinong Manok, also known as Chicken Delino, is a heritage dish from Tayabas City in Quezon Province, 
+                            featuring a whole chicken—often native or inahin—stuffed with glutinous rice (malagkit), sotanghon noodles,
+                             boiled eggs, onions, garlic, soy sauce, and spices, then slowly simmered in a flavorful broth until tender 
+                             and aromatic. This unique heirloom recipe, distinct from simple tinola or nilaga, yields juicy meat infused 
+                             with the stuffing's savory essence, served as a soup with the rice and goodies spilling out, perfect for family 
+                             gatherings or festivals like Mayohan alongside sweets like budin. A true Quezon delicacy, it's celebrated for 
+                             its comforting, story-laden flavors passed through generations.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.1087512726644!2d121.6139401!3d14
+                       .011565399999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4daf735a1c25%3A0x29a5a7640f7a4d8a!
+                       2sJonas%20Creamy%20Halo%20Halo%20and%20Restaurant!5e0!3m2!1sen!2sph!4v1769224118379!5m2!1sen!2sph" 
+                       width="300" 
+                       height="250"
+                        style="border:0;"
+                         allowfullscreen=""
+                          loading="lazy"
+                           referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+          else if (item === 'Bibingka') {
+            content = `
+                <h1 style="color: #0c1e31; ">Bibingka</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="bibingka.jpg" alt="Bibingka"></div>
+                    <div class="info-box">
+                        <p>Bibingka is a soft, spongy Filipino rice cake traditionally enjoyed during Christmas season 
+                            after Simbang Gabi masses, made from a batter of rice flour or fermented glutinous rice (galapong),
+                             coconut milk, sugar, eggs, and baking powder, lined in banana leaf molds and baked with live coals both 
+                             below and above for even browning. It's topped with grated coconut, butter or margarine, sugar, slices of 
+                             salted duck egg (itlog na maalat), and queso de bola or kesong puti cheese, creating a sweet-savory contrast
+                              with a delicate, slightly chewy texture that melts in the mouth. Unlike Doña Aurora's savory fried stuffed eggs,
+                               bibingka is a festive kakanin dessert highlighting coconut richness, often sold by street vendors in clay ovens 
+                               during the holidays.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.192721418448!2d121.62756237506557!3d14.
+                       00658409134376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a2b3efadf5e65d%3A0x70407332a8864c03!2sJuan&#39;
+                       s%20Famous%20Buko%20de%20Halo-Halo!5e0!3m2!1sen!2sph!4v1769224202102!5m2!1sen!2sph"
+                        width="300"
+                         height="250"
+                          style="border:0;" 
+                          allowfullscreen=""
+                           loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+          else if (item === 'Balul-Balul / Pilipit') {
+            content = `
+                <h1 style="color: #0c1e31; ">Balul-Balul / Pilipit</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Pilipit.jpg" alt="Balul-Balul / Pilipit"></div>
+                    <div class="info-box">
+                        <p>Yema Cake is an iconic dessert from Tayabas City, Quezon, popularized by Rodillas Yema Cake at Monica and
+                             Jett Bakeshop, featuring two layers of soft, fluffy chiffon sponge cake topped with rich, creamy yema
+                              frosting made from egg yolks, sugar, condensed milk, and butter for a sweet, custardy delight. A favorite pasalubong 
+                              (souvenir treat), it gained massive fame during the 2024 Yemayohan event at Mayohan Festival, where 1,400 cakes 
+                              formed a record-breaking 175-meter-long serving shared by locals and tourists. Available at branches in Quezon Avenue, 
+                              Tayabas, and Metro Manila spots like Makati, its melt-in-your-mouth texture makes it a must-try alongside local sweets
+                               like budin.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to buy</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247788.24145734112!2d121.
+                       29511152812498!3d13.976973010682185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4db2d2cd028f%3A0x93d98202f577a248!
+                       2sCORA&#39;S%20SPECIAL%20BUDIN%20AND%20PASALUBONG!5e0!3m2!1sen!2sph!4v1769224280741!5m2!1sen!2sph" 
+                       width="300" 
+                       height="250"
+                        style="border:0;"
+                         allowfullscreen=""
+                          loading="lazy" 
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+        // things to do 
+
+          else if (item === 'Tayabas City Hood') {
+            content = `
+                <h1 style="color: #0c1e31; ">Tayabas City Hood</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="tayabas cityhood.jpg" alt="Tayabas City Hood"></div>
+                    <div class="info-box">
+                        <p>Tayabas City commemorates its conversion from a municipality to a component city of Quezon Province every July 14,
+                             marking the 2007 plebiscite that ratified Republic Act No. 9398, enacted on March 18, 2007. This annual cityhood 
+                             celebration highlights the historic milestone amid legal affirmations by the Supreme Court in 2011, featuring local
+                              pride in heritage events alongside festivals like Mayohan.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to find</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7742.0837236340985!2d121.57717469357912!3d14.
+                      015532199999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7af6834941%3A0x589aa92510478286!2sNew%20
+                      Tayabas%20City%20Hall!5e0!3m2!1sen!2sph!4v1769224334293!5m2!1sen!2sph"
+                       width="300"
+                        height="250"
+                         style="border:0;"
+                          allowfullscreen=""
+                           loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+         else if (item === 'Araw ng Tayabas') {
+            content = `
+                <h1 style="color: #0c1e31; ">Araw ng Tayabas</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Araw ng Tayabas.jpg" alt="Araw ng Tayabas"></div>
+                    <div class="info-box">
+                        <p>Araw ng Tayabas, also known as Trece de Agosto, celebrates the historic liberation of Tayabas from Spanish
+                             colonial rule on August 13, 1898, when revolutionaries raised the Philippine flag at the patio of the Basilica
+                              of St. Michael the Archangel after a siege. Held annually on August 12-13 along Calle Trece de Agosto, 
+                              festivities emphasize heroism and victory with street parties, concerts, singing contests, marathons, games,
+                               food stalls featuring local treats like budin and lambanog, and the mayor's State of the City Address. 
+                               This vibrant event honors Tayabas' revolutionary past, distinct from its July 14 cityhood anniversary under 
+                               Republic Act 9398, drawing crowds to blend history with community revelry.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to find</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.865405525663!2d121.
+                       58610977974293!3d14.025991455829061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7d0753897
+                       f%3A0xe0dda9263f349499!2sMinor%20Basilica%20of%20St.%20Michael%20the%20Archangel!5e0!3m2!1sen!2sph!
+                       4v1769224394212!5m2!1sen!2sph" 
+                       width="300" 
+                       height="250" 
+                       style="border:0;" 
+                       allowfullscreen=""
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+
+         else if (item === 'Feast of St. Michael the Archangel') {
+            content = `
+                <h1 style="color: #0c1e31; ">Feast of St. Michael the Archangel</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Feast of St. Michael the Archangel.jpg" alt="Feast of St. Michael the Archangel"></div>
+                    <div class="info-box">
+                        <p>The Feast of St. Michael the Archangel, patron of Tayabas City, is celebrated annually on September 29 
+                            at the Minor Basilica of St. Michael, a National Cultural Treasure with a key-shaped layout and Asia's
+                             oldest church clock. Festivities blend solemn High Mass, processions of the saint's image through historic 
+                             streets, and community events like fireworks, brass bands, lechon parades, and stalls offering lambanog, 
+                             budin, and suman. This major religious highlight honors the basilica's Franciscan roots since 1578, drawing
+                              pilgrims amid Lenten traditions like Buen Camino.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to find</strong><br><br>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.865405525663!2d121.
+                       58610977974293!3d14.025991455829061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7d0753897
+                       f%3A0xe0dda9263f349499!2sMinor%20Basilica%20of%20St.%20Michael%20the%20Archangel!5e0!3m2!1sen!2sph!
+                       4v1769224394212!5m2!1sen!2sph" 
+                       width="300" 
+                       height="250" 
+                       style="border:0;" 
+                       allowfullscreen=""
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+
+         else if (item === 'Backpack Venture') {
+            content = `
+                <h1 style="color: #0c1e31; ">Backpack Venture</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Backpack Venture.webp" alt="Backpack Venture"></div>
+                    <div class="info-box">
+                        <p>Tayabas refers to adventurous travel experiences tailored for backpackers exploring the city's historic streets,
+                             basilica, and nearby natural sites like Mount Banahaw trails. These ventures often include heritage road trips 
+                             past Spanish-era bridges, food tours sampling budin and lambanog, and low-cost stays blending culture with
+                              eco-adventures ideal for budget travelers from nearby Calabarzon areas like Sampaloc. Local handicraft shopping
+                               and festival hopping during Mayohan or Araw ng Tayabas enhance the immersive, youthful vibe of these backpacker 
+                               itineraries.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>many places to find</strong><br><br>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+
+         else if (item === 'Staycation') {
+            content = `
+                <h1 style="color: #0c1e31; ">Staycation</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="stay.jpg" alt="Staycation"></div>
+                    <div class="info-box">
+                        <p>Tayabas City offers serene staycations blending heritage charm with nature escapes near Mount Banahaw, 
+                            ideal for short getaways from Sampaloc. Top picks include Nawawalang Paraiso Resort & Hotel at 
+                            Mt. Banahaw's base, featuring mineral pools, cottages, suites, and dorms amid lush greenery 
+                            for relaxing dips and basilica day trips. Villa Juliana Resort provides family-friendly pools, 
+                            spacious rooms with pond views, and bonding vibes, while Kamayan sa Palaisdaan combines floating 
+                            restaurant dining with overnight stays.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>many places tp find</strong><br><br>
+                      
+                    </div>
+                </div>
+             
+            `;
+        }
+
+
+         else if (item === 'Food Feasting') {
+            content = `
+                <h1 style="color: #0c1e31; ">Food Feasting</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Food Feasting.jpg" alt="Food Feasting"></div>
+                    <div class="info-box">
+                        <p>Tayabas City offers a vibrant food feasting scene blending heritage dishes like budin, lambanog, sinugno, 
+                            and yema cake with top eateries perfect for your local tourism project. Start at Kamayan sa Palaisdaan for 
+                            floating tables of fresh seafood kare-kare, ginataang tilapia, crispy pata, and sisig amid rice fields in
+                             Brgy. Dapdap, then hit Juan's Famous Buko de Halo-Halo at Cassandra Farmville for massive coconut-shell 
+                             halo-halo plus inasal and onion rings. Kusina ni Pareng Avel serves budget bilao feasts with tender spareribs,
+                              ginataang sitaw kalabasa, and smoothies on Camaysa-Lucban Rd, while Bellepat Restaurant delivers fresh Filipino
+                               fusion in Brgy. Ilayang Wakas; snag street eats like Cora's budin on Calle Budin, Rodillas yema cake, or Mallari
+                                lambanog tastings, as praised by Erwan Heussaff at Dizon's karinderya for authentic vibes ideal for TikTok visuals
+                                 during Mayohan or cityhood fests.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>many places to find</strong><br><br>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+
+         else if (item === 'Visita Iglesia') {
+            content = `
+                <h1 style="color: #0c1e31; ">Visita Iglesia</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="vista.jpg" alt="Visita Iglesia"></div>
+                    <div class="info-box">
+                        <p>Visita Iglesia in Tayabas City centers on the iconic Minor Basilica of St. Michael the Archangel,
+                             a National Cultural Treasure known as the "Key of Tayabas" for its unique key-shaped layout and the 
+                             longest nave (103 meters) among Spanish-era churches in the Philippines. Ideal during Holy Week, 
+                             pilgrims start here for solemn reflection amid its Baroque facade, intricate retablos, and Asia's 
+                             oldest church clock, often combining with nearby Quezon sites like Lucban Church, Sariaya Church, or
+                              Kamay ni Hesus Shrine via a west-east route (Dolores-Tiaong-Candelaria-Sariaya-Lucena-Pagbilao-Tayabas-Lucban). 
+                              Pair your visit with Buen Camino processions or food stops for budin and lambanog, enhancing this Lenten tradition
+                               perfect for your tourism project visual.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to find</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.865405525663!2d121.
+                       58610977974293!3d14.025991455829061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7d0753897
+                       f%3A0xe0dda9263f349499!2sMinor%20Basilica%20of%20St.%20Michael%20the%20Archangel!5e0!3m2!1sen!2sph!
+                       4v1769224394212!5m2!1sen!2sph" 
+                       width="300" 
+                       height="250" 
+                       style="border:0;" 
+                       allowfullscreen=""
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+
+         else if (item === 'Shop at Calle Budin') {
+            content = `
+                <h1 style="color: #0c1e31; ">Shop at Calle Budin</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Shop at Calle Budin.jpg" alt="Shop at Calle Budin"></div>
+                    <div class="info-box">
+                        <p>Calle Budin, or Kalye Budin on Emilio Jacinto Street near Tayabas City's public market,
+                             is the ultimate pasalubong haven lined with wooden houses selling stacked boxes of iconic
+                              sweets and treats since the 1970s. Shop at Cora's Special Budin for their signature moist 
+                              cassava cake baked in traditional hornohan ovens, alongside crunchy pilipit, nilupak/minukmok,
+                               ube halaya, yema/mazapan candies, espasol, tikoy, cassava chips, and Quezon longganisa sausages 
+                               praised by Chef Tatung and Erwan Heussaff. Rodillas Yema Cake sits at the corner for fluffy 
+                               custard-topped sponges, while nearby stalls offer tamales and lambanog bottles—perfect for grabbing 
+                               festival hauls during Mayohan or Araw ng Tayabas to bring home to Sampaloc.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to find</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.8688916955407!2d121.
+                       59138457506566!3d14.025784890891178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4db2d2cd028f%3A0x93d98202f577a248!
+                       2sCORA&#39;S%20SPECIAL%20BUDIN%20AND%20PASALUBONG!5e0!3m2!1sen!2sph!4v1769224548140!5m2!1sen!2sph" 
+                       width="300"
+                        height="250"
+                         style="border:0;"
+                          allowfullscreen=""
+                           loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+// things to remember
+
+ else if (item === 'Tagayan Ritual') {
+            content = `
+                <h1 style="color: #0c1e31; ">Tagayan Ritual</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Tagayan Rituall.jpg" alt="Tagayan Ritual"></div>
+                    <div class="info-box">
+                        <p>Tagayan Ritual is a cherished cultural tradition unique to Tayabas City and Quezon Province, 
+                            where locals gather in a circle called umpukan to share shots of potent lambanog (coconut vodka)
+                             in a structured, respectful manner symbolizing camaraderie, agreement resolution, and hospitality.
+                              A designated tanggera (pourer) ensures stomachs are full before starting, tastes the first shot for
+                               safety, and pours clockwise while chanting "Naay po" ("Here's the drink"), met with the group's 
+                               reply "Pakinabangan po" ("Make good use of it"), often with guitar strumming and ancestral invocations. 
+                               Performed during feasts like Mayohan or Niyogyugan Festival openings, weddings, and visitor welcomes, 
+                               it ends when the bottle returns empty to the tanggera, fostering bonds amid rhythmic dances and chants perfect
+                                for TikTok alongside Calle Budin sweets.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to find</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.8801988528126!2d121.58996747506578!3d14.
+                       025114890907068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7d18f39c07%3A0x98737b85229c979e!2sOld%20
+                       Tayabas%20City%20Hall!5e0!3m2!1sen!2sph!4v1769224686443!5m2!1sen!2sph" 
+                       width="300"
+                        height="250" 
+                        style="border:0;"
+                         allowfullscreen=""
+                          loading="lazy"
+                           referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+         else if (item === ' St. Michael the Archangel Blessing') {
+            content = `
+                <h1 style="color: #0c1e31; "> St. Michael the Archangel Blessing</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="st.jpg" alt=" St. Michael the Archangel Blessing"></div>
+                    <div class="info-box">
+                        <p>St. Michael the Archangel Blessing refers to the solemn rituals during the patron saint's feast on September 
+                            29 at Tayabas City's Minor Basilica, where the venerated image receives special prayers, anointing,
+                             and benediction amid High Mass and floral offerings. Devotees seek protection against evil and spiritual 
+                             strength through the archangel's intercession, often culminating in processions past historic bridges with 
+                             lechon parades, fireworks, and tagayan rituals featuring lambanog shots. This vibrant celebration at the 
+                             "Key of Tayabas" basilica blends faith with community feasting on budin and suman, drawing pilgrims for 
+                             blessings during non-Lenten visits.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to find</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.865405525663!2d121.
+                       58610977974293!3d14.025991455829061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7d0753897
+                       f%3A0xe0dda9263f349499!2sMinor%20Basilica%20of%20St.%20Michael%20the%20Archangel!5e0!3m2!1sen!2sph!
+                       4v1769224394212!5m2!1sen!2sph" 
+                       width="300" 
+                       height="250" 
+                       style="border:0;" 
+                       allowfullscreen=""
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+         else if (item === 'Tabi po Nuno') {
+            content = `
+                <h1 style="color: #0c1e31; ">Tabi po Nuno</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="tabi pi nuno.avif" alt="Tabi po Nuno"></div>
+                    <div class="info-box">
+                        <p>"Tabi po Nuno" (or more commonly "Tabi-tabi po") is a traditional Filipino phrase of respect uttered when passing anthills, 
+                            old trees, grassy mounds, or natural spots believed to house the Nuno sa Punso—goblin-like earth spirits with childlike bodies,
+                             white hair, and large eyes who guard their territory fiercely. In Tayabas contexts like Mount Banahaw trails or historic paths 
+                             near the basilica, it politely asks these duwende or engkanto to step aside ("tabi" means "aside"), preventing curses, rashes, 
+                             fevers, or stomach ailments from unintentional disrespect such as stepping on their domain. Say it softly with "po" for politeness,
+                              especially during Visita Iglesia, Tagayan rituals, or backpack ventures to blend folklore with your tourism project visuals alongside 
+                              Calle Budin sweets.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>tradition to say when you are in nature etc.</strong><br><br>
+                    </div>
+                </div>
+             
+            `;
+        }
+         else if (item === 'Bring Sweater / Jacket and Umbrella') {
+            content = `
+                <h1 style="color: #0c1e31; ">Bring Sweater / Jacket and Umbrella</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Bring Sweater Jacket and Umbrella.jpeg" alt="Bring Sweater / Jacket and Umbrella"></div>
+                    <div class="info-box">
+                        <p>Tayabas City in January features warm tropical weather with daytime highs around 27-30°C 
+                            (81°F) and nighttime lows of 22-24°C (72°F), feeling humid due to its lowland location near Mount Banahaw. 
+                            No sweater or jacket is needed as evenings stay balmy without cold snaps, but pack a lightweight umbrella or 
+                            raincoat for frequent afternoon showers typical of the Philippines' dry-to-wet transition—perfect for your backpack 
+                            venture or Visita Iglesia without overheating. Opt for breathable clothes, hat, sunscreen, and quick-dry gear instead, 
+                            especially for food feasting at Calle Budin or Tagayan rituals outdoors.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                  </div>
+                </div>
+             
+            `;
+        }
+         else if (item === '#Lungsodnainyongmaipagmamalaki') {
+            content = `
+                <h1 style="color: #0c1e31; ">#Lungsodnainyongmaipagmamalaki</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="lungsod.jpg" alt="#Lungsodnainyongmaipagmamalaki"></div>
+                    <div class="info-box">
+                        <p>#LungsodNaInyongMaipagmamalaki translates to "The City You Can Be Proud Of," serving as Tayabas City's official 
+                            slogan under Mayor Anthony "Kuya Piwa" A. Lim, highlighting its rich history, vibrant festivals like Mayohan
+                             and Araw ng Tayabas, culinary gems from Calle Budin (budin, yema cake, lambanog), cultural rituals such as Tagayan, 
+                             and landmarks including the Minor Basilica of St. Michael. This tagline embodies community pride in a "truly happy, 
+                             peaceful, and progressive" heritage hub with Spanish bridges, Visita Iglesia routes, and backpacker-friendly staycations 
+                             near Mount Banahaw—perfect for your ICT tourism project or TikTok series promoting local pride from Sampaloc, Calabarzon.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>where to find</strong><br><br>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+
+
+// place to visit
+         else if (item === 'basilica') {
+            content = `
+                <h1 style="color: #0c1e31; ">Minor Basilica of St. Michael the Archangel</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Minor Basilica of St. Michael the Archangel.jpg" alt="Minor Basilica of St. Michael the Archangel"></div>
+                    <div class="info-box">
+                        <p>The Minor Basilica of St. Michael the Archangel, affectionately called Tayabas Basilica or Susì ng Tayabas 
+                            ("Key of Tayabas") for its unique key-shaped cruciform layout, serves as Quezon Province's grandest Spanish-era 
+                            church and a National Cultural Treasure since 2001. Founded as a parish in 1580 by Franciscan missionaries Juan 
+                            de Plasencia and Diego de Oropesa, construction evolved from a simple bamboo camarin in 1585 to a majestic stone 
+                            structure by 1600 under St. Pedro Bautista, featuring a 103-meter-long nave—one of the nation's longest—and Asia's
+                             oldest church clock from around 1812, with Baroque facade, twin bell towers, and ornate retablos. Elevated to 
+                             Minor Basilica status by Pope John Paul II in 1988, it anchors the September 29 patronal feast with vibrant processions,
+                              Lenten Buen Camino and Senakulo events, and Visita Iglesia pilgrimages, blending spirituality with Tayabas' 
+                              heritage festivals, Tagayan rituals, and nearby Calle Budin food trails—perfect for your tourism project visuals.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.865404934!2d121.
+                       5884057750658!3d14.02599149088642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7d0753897f%3A0xe0dda9263f349499!
+                       2sMinor%20Basilica%20of%20St.%20Michael%20the%20Archangel!5e0!3m2!1sen!2sph!4v1769171433231!5m2!1sen!2sph" 
+                       width="600" 
+                       height="450" 
+                       style="border:0;" 
+                       allowfullscreen="" 
+                       loading="lazy" 
+                       referrerpolicy="no-referrer-when-downgrade">
+                       </iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+        else if (item === 'Ermita') {
+            content = `
+                <h1 style="color: #0c1e31; ">Ermita Church</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="ermita.jpg" alt="Ermita Church"></div>
+                    <div class="info-box">
+                        <p>The Minor Basilica of St. Michael the Archangel, affectionately called Tayabas Basilica or Susì ng Tayabas 
+                            ("Key of Tayabas") for its unique key-shaped cruciform layout, serves as Quezon Province's grandest Spanish-era 
+                            church and a National Cultural Treasure since 2001. Founded as a parish in 1580 by Franciscan missionaries Juan 
+                            de Plasencia and Diego de Oropesa, construction evolved from a simple bamboo camarin in 1585 to a majestic stone 
+                            structure by 1600 under St. Pedro Bautista, featuring a 103-meter-long nave—one of the nation's longest—and Asia's
+                             oldest church clock from around 1812, with Baroque facade, twin bell towers, and ornate retablos. Elevated to 
+                             Minor Basilica status by Pope John Paul II in 1988, it anchors the September 29 patronal feast with vibrant processions,
+                              Lenten Buen Camino and Senakulo events, and Visita Iglesia pilgrimages, blending spirituality with Tayabas' 
+                              heritage festivals, Tagayan rituals, and nearby Calle Budin food trails—perfect for your tourism project visuals.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.841168104505!2d121.
+                       58547137974291!3d14.027427505791751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d7d88f
+                       728c1%3A0x41aca5808ed04d1c!2sErmita%20Church%2C%20City%20of%20Tayabas%2C%204327%20Quezon!5e0!3m2!
+                       1sen!2sph!4v1769226484554!5m2!1sen!2sph"
+                        width="300" 
+                        height="250" 
+                        style="border:0;"
+                         allowfullscreen=""
+                          loading="lazy"
+                           referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'casa') {
+            content = `
+                <h1 style="color: #0c1e31; ">Casa Comunidad de Tayabas</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Casa Comunidad de Tayabas.jpg" alt="Casa Comunidad de Tayabas"></div>
+                    <div class="info-box">
+                        <p>Casa Comunidad de Tayabas is a well-preserved Spanish colonial Bahay na Bato landmark facing the town plaza
+                         opposite the Minor Basilica, originally built as a light-material tribunal in 1776 by Gobernadorcillo Francisco
+                          Lopez and rebuilt in stone by Don Diego Enriquez in 1831, inaugurated in 1835 as a guesthouse (bulwagan) for 
+                          dignitaries, travelers, and community hall with ornate decorations added by Gobernador Jose Maria dela O in 1837. 
+                          It survived fires in the 1880s and WWII destruction (serving as Japanese barracks), later functioning as a public
+                           school before full reconstruction in the 2000s to its original form, now housing a museum with stone artifacts,
+                           historical markers, a gallery, and municipal library. A National Historical Landmark since 1988, this elegant 
+                           structure with wide capiz windows and media aguas embodies Tayabas' governance heritage, perfect for heritage walks
+                            linking to Calle Budin sweets and Tagayan rituals near your Calabarzon base.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.8704443514716!2d121.
+                       58926367506585!3d14.025692890893398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4da1c8997dfd%3A0x93b549f2c46fddca!
+                       2sCasa%20Comunidad%20De%20Tayabas!5e0!3m2!1sen!2sph!4v1769226684034!5m2!1sen!2sph"
+                        width="300"
+                         height="250" 
+                         style="border:0;"
+                          allowfullscreen=""
+                           loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Puente de Malagonlong') {
+            content = `
+                <h1 style="color: #0c1e31; ">Puente de Malagonlong</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="malagonlong.webp" alt="Puente de Malagonlong"></div>
+                    <div class="info-box">
+                        <p>Puente de Malagonlong, one of Tayabas City's 11 Spanish-era bridges and a National Cultural Treasure, 
+                            spans 136 meters (445 feet) across Dumacaa River with five majestic stone arches, built from 1840-1850 
+                            using ~100,000 adobe blocks through forced polo y servicio labor under Fray Antonio Mateos and Gobernadorcillo Don
+                             Joaquin Ortega, inaugurated in 1850. The longest Spanish colonial bridge in the Philippines, connecting Brgys. 
+                             Mateuna and Lakawan to Tayabas proper, it now serves pedestrians with scenic balconies while vehicles use the parallel
+                              modern bridge, perfect for heritage photos during backpack ventures or Araw ng Tayabas festivities near the basilica.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.086758256968!2d121.
+                      61430037506567!3d14.01286979119569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d455630f97b%3A0x952095f4e9e72055!
+                      2sMalagonlong%20Bridge%20(Old)%2C%20City%20of%20Tayabas%2C%204327%20Quezon!5e0!3m2!1sen!2sph!4v1769224928236!5m2!1sen!2sph" 
+                      width="300"
+                       height="250" 
+                       style="border:0;" 
+                       allowfullscreen=""
+                        loading="lazy"
+                         referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Santuario de Las Almas') {
+            content = `
+                <h1 style="color: #0c1e31; ">Santuario de Las Almas</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Mortuario de Cementerio para Los Indios.JPG" alt="Santuario de Las Almas"></div>
+                    <div class="info-box">
+                        <p>Santuario de las Almas in Tayabas City, Quezon, is a historic 19th-century cemetery chapel built around 1855, 
+                            originally known as Cementerio de los Españoles—the burial ground for wealthy Filipinos (principales) and Spanish 
+                            peninsulares during colonial times, contrasting with the nearby Camposanto para los Indios for native burials. Now a 
+                            revered devotion site for souls in purgatory, it hosts masses, novenas, and All Souls' Day events amid its simple stone 
+                            facade and serene grounds, part of Tayabas' heritage church circuit alongside the Minor Basilica and Hermita de Nuestra 
+                            Señora de Angustias. Integrated into Visita Iglesia routes and Lenten traditions like Buen Camino, it complements nearby
+                             Puente de Malagonlong walks and Calle Budin food trails for your tourism project visuals.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.9455866200638!2d121
+                      .59126697974222!3d14.021239755951955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d
+                      649cbfa603%3A0xb19fbdcc70b0a08!2sSt.%20Joseph%20Chapel!5e0!3m2!1sen!2sph!4v1769224987444!5m2!1sen!2sph"
+                       width="300" 
+                       height="250" 
+                       style="border:0;"
+                        allowfullscreen=""
+                         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Mortuario de Cementerio para Los Indios') {
+            content = `
+                <h1 style="color: #0c1e31; ">Mortuario de Cementerio para Los Indios</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Mortuario de Cementerio para Los Indios.JPG" alt="Mortuario de Cementerio para Los Indios"></div>
+                    <div class="info-box">
+                        <p>Mortuario de Cementerio para Los Indios, also called Campo Santo de los Indios or Campo Santo para los Indios,
+                             is one of Tayabas City's oldest cemetery chapels built in 1887 in Brgy. Baguio to serve as the burial ground 
+                             for native Filipinos (Indios) who converted to Roman Catholicism, expanding from earlier churchyard burials due 
+                             to rising deaths and church rules against cremation. Distinct from the elite Santuario de las Almas for Spanish 
+                             peninsulares and wealthy principales, this Gothic-style chapel with adobe walls anchors All Souls' Day masses and 
+                             novenas for purgatory souls, forming part of Tayabas' colonial heritage circuit alongside the Minor Basilica during 
+                             Visita Iglesia or Lenten Buen Camino processions. Its enduring stone structure complements nearby Puente de Malagonlong 
+                             walks and Calle Budin food trails, ideal for your tourism project's dark heritage visuals near Sampaloc.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.953770987157!2d121.
+                      51738977506487!3d13.961357392407349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4eb
+                      14a42aa29%3A0x88f45036a9509df3!2sRoman%20Catholic%20Cemetery!5e0!3m2!1sen!2sph!4v1769225040051!5m2!1sen!2sph"
+                       width="300"
+                        height="250" 
+                        style="border:0;"
+                         allowfullscreen="" 
+                         loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Maria Nature Park') {
+            content = `
+                <h1 style="color: #0c1e31; ">Maria Nature Park</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="maria.jpg" alt="Maria Nature Park"></div>
+                    <div class="info-box">
+                        <p>Maria Nature Park in Brgy. Lakawan, Tayabas City along Tayabas-Pagbilao Road, is a budget-friendly family 
+                            nature spot charging just PHP 20 entrance, open Tuesday-Sunday 8AM-5PM with cottages, picnic tables, paid 
+                            parking, and a pristine river for swimming amid lush greenery—perfect for unwinding post-basilica visits or
+                             Calle Budin feasts. This relaxing haven offers tent spaces, cold freshwater dips, and soul-calming vibes ideal 
+                             for day trips with kids or group picnics, complementing heritage trails like Puente de Malagonlong while saying
+                              "tabi po nuno" along Lakawan River paths near your Sampaloc base.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.1697403363924!2d121.62294817974067!3d14
+                       .007947556295685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d0cc68c7c1d%3A0x8bf59711e712419e!2s
+                       Maria%20Nature%20Park!5e0!3m2!1sen!2sph!4v1769225081956!5m2!1sen!2sph"
+                        width="600"
+                         height="450"
+                          style="border:0;"
+                           allowfullscreen="" 
+                           loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Semara') {
+            content = `
+                <h1 style="color: #0c1e31; ">Semara</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="semara.webp" alt="Semara"></div>
+                    <div class="info-box">
+                        <p>Semara's Farm, located along Pagbilao Road in Brgy. Lakawan, Tayabas City beside Alfresco Jardin Restaurant, 
+                            is a lush nature retreat offering flower gardens arranged in creative shapes, wide grassy fields for picnics 
+                            and frisbee, a clean river for swimming, and camping under shady trees with tent/mat rentals available.
+                             Entrance costs PHP 80/adult and PHP 60/kids under 12, open daily from 9AM with on-site snacks, grills, 
+                             and parking—perfect for family unwinding near Maria Nature Park, Puente de Malagonlong, or post-basilica 
+                             heritage walks paired with "tabi po nuno" trails and Calle Budin pasalubong.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.1443688727136!2d121.
+                       62192257506558!3d14.009452691276223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d33645c
+                       98c9%3A0xb8e075f8b84b9660!2sSemara&#39;s%20Farm!5e0!3m2!1sen!2sph!4v1769225126972!5m2!1sen!2sph"
+                        width="=300"
+                         height="4=250"
+                          style="border:0;"
+                           allowfullscreen="" 
+                           loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Bente Pools') {
+            content = `
+                <h1 style="color: #0c1e31; ">Bente Pools</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="20.jpg" alt="Bente Pools"></div>
+                    <div class="info-box">
+                        <p>Bente Pools, locally known as Edelyn Resort or E'rich Resort (Mayara Resort), sits in Brgy. Dapdap, Tayabas City
+                             along the road to Kamayan sa Palaisdaan, earning its name from the ultra-affordable PHP 20 entrance fee for 
+                             crystal-clear, mountain-chilled pools fed by Mt. Banahaw springs with Banahaw views. Cottages start at PHP 60,
+                              perfect for selfies</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61938.286977886375!2d121.
+                       58329767088428!3d14.00953768319791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd53c126deede9%3
+                       A0x593d80a1a7c502a!2sEdelyn%20Resort!5e0!3m2!1sen!2sph!4v1769225173331!5m2!1sen!2sph" 
+                       width="300"
+                        height="250" 
+                        style="border:0;"
+                         allowfullscreen=""
+                          loading="lazy" 
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Sireyo') {
+            content = `
+                <h1 style="color: #0c1e31; ">Sireyo</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="sereyo.jpg" alt="Sireyo"></div>
+                    <div class="info-box">
+                        <p>Sireyo Resort (likely what you meant by "Sereyo") in Brgy. Ibabang Palale, Tayabas City, is a scenic
+                             budget-friendly nature escape with pools, view decks overlooking mountains, camping areas, and lush 
+                             greenery, charging PHP 120/adult day pass (7AM-4PM, seniors/PWDs PHP 100, kids lower). Cottages start
+                              around PHP 300, perfect for family hangouts or group unwinding near heritage spots like the basilica 
+                              or Puente de Malagonlong, complementing nearby Bente Pools (Edelyn) and Lakawan farms for varied Calabarzon
+                               staycations from Sampaloc—ideal for TikTok nature reels post-Calle Budin feasts.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.
+                       5688394940858!2d121.66992657506594!3d14.043552890471908!2m3!1f0!2f0!3f0!3m2!
+                       1i1024!2i768!4f13.1!3m3!1m2!1s0x33a2ad0bdf29d675%3A0xcd065963eed2f9e1!2sSireyo%20Resort!
+                       5e0!3m2!1sen!2sph!4v1769225217251!5m2!1sen!2sph"
+                        width="300" 
+                        height="250" 
+                        style="border:0;"
+                         allowfullscreen=""
+                          loading="lazy"
+                           referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Puerto Serene') {
+            content = `
+                <h1 style="color: #0c1e31; ">Puerto Serene</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="PUERTO SERENE.jpg" alt="Puerto Serene"></div>
+                    <div class="info-box">
+                        <p>Puerto Serene Resort and Event Place, newly opened in late 2025 at Sitio Taaw, Brgy. Ibabang Ilasan, Tayabas City, 
+                            offers Indonesian-inspired villas, serene pools, event spaces, and tranquil mountain views for staycations blending 
+                            luxury with nature—perfect for unwinding after basilica visits or Calle Budin feasts. This modern escape features promo
+                             rates during soft openings (Dec 8-12, 2025: 50% off entrance, 10% room discounts), complementing budget gems like
+                              Bente Pools, Sireyo, and Lakawan farms for diverse Calabarzon getaways near Sampaloc, ideal for your tourism project 
+                              highlighting #LungsodNaInyongMaipagmamalaki.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.2499313352323!2d121.63473317974702!3d14.062413354885368
+!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a2ad0063d02e7b%3A0xf4b9a762f6156b39!2sPuerto%20Serene%20Resort%20and%20
+Event%20Place!5e0!3m2!1sen!2sph!4v1769225277187!5m2!1sen!2sph" 
+width="300" 
+height="250" 
+style="border:0;" 
+allowfullscreen=""
+ loading="lazy" 
+ referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Nawawalang Paraiso Resort & Hotel') {
+            content = `
+                <h1 style="color: #0c1e31; ">Nawawalang Paraiso Resort & Hotel</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="NAWAWALANG PARAISO.png" alt="Nawawalang Paraiso Resort & Hotel"></div>
+                    <div class="info-box">
+                        <p>Nawawalang Paraiso Resort & Hotel, nestled at the foot of mystical Mt. Banahaw in Brgy. Camaysa along Tayabas-Lucban Road,
+                             has been a beloved Quezon staycation haven since opening in 1985, offering spacious grounds with natural spring-fed pools,
+                              cottages, cabanas, hotel rooms, suites, and dorms amid lush gardens perfect for families or retreats. Named 
+                              "Lost Paradise," it features on-site dining with signature bilao feasts, event spaces, kids' areas, and easy access
+                               to Tayabas Basilica, Puente de Malagonlong, and Calle Budin—ideal for blending heritage tours with relaxation
+                                during Mayohan or cityhood fests from your Sampaloc base.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.486344398894!2d121.5684087750661!3d14.
+                      048434090356732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd52662ac3396f%3A0x472d6a8ea3066bae!2s
+                      Nawawalang%20Paraiso!5e0!3m2!1sen!2sph!4v1769225386442!5m2!1sen!2sph"
+                       width="300" 
+                       height="250"
+                        style="border:0;"
+                         allowfullscreen=""
+                          loading="lazy"
+                           referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Mainit Hotspring') {
+            content = `
+                <h1 style="color: #0c1e31; ">Mainit Hotspring</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="MAINIT.jpg" alt="Mainit Hotspring"></div>
+                    <div class="info-box">
+                        <p>Bukal na Mainit Hot Spring Resort (Mainit Hotspring), Quezon Province's only natural hot spring, bubbles in 
+                            Brgy. Silangang Palale along Tayabas-Mauban Road (contact 0942-823-1252), offering therapeutic sulfur-rich pools of 
+                            varying temperatures from warm to steaming hot, collected in cement vats amid lush greenery—perfect for relaxing muscles
+                             post-basilica hikes or Tagayan rituals. Open 7AM-4PM daily with family-friendly pools, picnic areas, and simple stalls,
+                              it's a budget gem (entrance ~PHP 50-100) near Bente Pools and Sireyo Resort, ideal for contrasting cold mountain dips 
+                              during your Calabarzon tourism project contrasting heritage with nature escapes from Sampaloc—just say "tabi po nuno"
+                              along the rural path.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.2153777741833!2d121.
+                       67545437506632!3d14.064455389978045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a2ac5
+                       7140f6b6d%3A0x4e51a1e2ee2c1b56!2sBokal%20na%20Mainit%20Hot%20Spring!5e0!3m2!1sen!2sph!4v1769225449106!5m2!1sen!2sph" 
+                       width="300"
+                        height="250"
+                         style="border:0;"
+                          allowfullscreen=""
+                           loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Habilin Farm') {
+            content = `
+                <h1 style="color: #0c1e31; ">Habilin Farm</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="HABILIN FARM.png" alt="Habilin Farm"></div>
+                    <div class="info-box">
+                        <p>Habilin Farms, located at 230 Sitio Padilla, Brgy. Ilayang Bukal, Tayabas City, Quezon (contact +63 917 558 1543),
+                             sits at the foot of Mt. Banahaw as a permaculture haven blending sustainable farming, eco-tourism, and farm-to-table 
+                             experiences amid fertile volcanic soil and mountain springs. Open daily 8AM-5PM, it offers bamboo workshops, forest 
+                             camping, organic harvests, and immersive activities like diversified crop tending—ideal for your ICT tourism projects
+                              showcasing regenerative agriculture near Nawawalang Paraiso or Mainit Hotspring from Sampaloc</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.089907602581!2d121.54159247824556!3d14.
+                       012683012892154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d5babbcd6c9%3A0x755cbc364ce23d3f!2s
+                       Habilin%20Farms!5e0!3m2!1sen!2sph!4v1769225517475!5m2!1sen!2sph"
+                        width="300"
+                         height="250"
+                          style="border:0;"
+                           allowfullscreen=""
+                            loading="lazy"
+                             referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Yumis Farm') {
+            content = `
+                <h1 style="color: #0c1e31; ">Yumis Farm</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="yumis.jpg" alt="Yumis Farm"></div>
+                    <div class="info-box">
+                        <p>Yumi's Farm, a serene organic haven at Kaunlarang Ilayang Bukal, Brgy. Ilayang Bukal, Tayabas City, Quezon 
+                            (contact +63 908 228 0113), thrives at Mt. Banahaw's foothills growing fruits, veggies, flowers, and livestock—all
+                             chemical-free and DA-supported for farm tourism. This peaceful escape offers farm stays, tours, and guest houses like 
+                             Jumbo House amid lush greenery, just 470m from Habilin Farms, making it a perfect low-key complement to permaculture 
+                             adventures or Mainit Hotspring soaks for your Sampaloc-based Calabarzon tourism mappings.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d989683.205172033!2d120.67545751394711!3d14.
+                      314335942019657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4ddeef7a99f7%3A0x7298d6f7cea333a!2sYumi&#39;
+                      s%20Farm!5e0!3m2!1sen!2sph!4v1769225559244!5m2!1sen!2sph"
+                       width="300" 
+                       height="250" 
+                       style="border:0;"
+                        allowfullscreen=""
+                         loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Kamayan sa Palaisdaan') {
+            content = `
+                <h1 style="color: #0c1e31; ">Kamayan sa Palaisdaan</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="kamayan.JPG" alt="Kamayan sa Palaisdaan"></div>
+                    <div class="info-box">
+                        <p>Kamayan sa Palaisdaan Hotel and Resort is a popular dining and accommodation spot in Brgy. Dapdap, along the 
+                            Tayabas-Lucban Road in Tayabas City, Quezon. Known as Tayabas' original "floating restaurant," it specializes 
+                            in kamayan-style Filipino seafood feasts amid natural lake views, with open-air huts, hotel rooms, and amenities
+                             open daily 9AM-9PM (restaurant contacts: 0918-951-0460, 0917-556-2642). Conveniently near Kamay ni Hesus shrine
+                              and Lignon Hill (5-10 min drive), it pairs perfectly with nearby farms like Habilin or Yumi's for full-day Calabarzon
+                               itineraries from your Sampaloc base, blending native cuisine with serene vibes.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.2798337879417!2d121.
+                      56787967974681!3d14.060645954931173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d77
+                      a3ce2367%3A0x4c593e58acff50b6!2sKamayan%20sa%20Palaisdaan!5e0!3m2!1sen!2sph!4v1769225653700!5m2!1sen!2sph"
+                       width="300" 
+                       height="250" 
+                       style="border:0;"
+                        allowfullscreen=""
+                         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Air Summit Gourmet') {
+            content = `
+                <h1 style="color: #0c1e31; ">Air Summit Gourmet</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="air.jpg" alt="Air Summit Gourmet"></div>
+                    <div class="info-box">
+                        <p>Air Summit Gourmet offers a unique airplane-themed dining experience in Brgy. Dapdap, Tayabas City, Quezon, 
+                            along the Tayabas-Lucban Road, open daily from 10AM-8PM (contact 0917-852-3028). Diners "board" via a check-in
+                            counter with boarding passes, then enjoy fine Filipino-Asian set meals like bulalo, pasta, and ginataan inside a
+                             real plane fuselage, served with flight announcements and window views—highly rated for ambiance near Kamayan 
+                             sa Palaisdaan (3.9/5 on Tripadvisor). Just 10-15 minutes from Kamay ni Hesus, it complements your Tayabas tourism 
+                             cluster (farms, hotsprings, resorts) with Instagram-worthy gimmick dining for Calabarzon itineraries from Sampaloc.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.3101599322044!2d121.5672677750663!3d14.
+                       058853290110601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd5245202ac4bf%3A0xe9e99c6929ee04ce!2sAir%
+                       20Summit%20Gourmet!5e0!3m2!1sen!2sph!4v1769225706930!5m2!1sen!2sph" 
+                       width="300"
+                        height="250"
+                         style="border:0;"
+                          allowfullscreen=""
+                           loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Juans Famous Buko de Halo-Halo') {
+            content = `
+                <h1 style="color: #0c1e31; ">Juans Famous Buko de Halo-Halo</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="juans.jpg" alt="Juans Famous Buko de Halo-Halo"></div>
+                    <div class="info-box">
+                        <p>Juan's Famous Buko de Halo-Halo is a popular dessert spot in Brgy. Mate (Cassandra Farmville area), along 
+                            Tayabas-Pagbilao Road, Tayabas City, Quezon, renowned for its signature buko halo-halo served inside fresh
+                             coconut shells with free buko juice, alongside Filipino favorites like inasal, sisig, and kare-kare. 
+                             Open daily 9AM-10PM (contact (042) 784-7080 or +63 917 515 0323), this Instagram-famous eatery offers a
+                              cozy native kubo vibe perfect for cooling off after nearby heritage sites or farm tours.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.192721418448!2d121.
+                       62756237506555!3d14.006584091343763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a2b3efad
+                       f5e65d%3A0x70407332a8864c03!2sJuan&#39;s%20Famous%20Buko%20de%20Halo-Halo!5e0!3m2!1sen!2sph!4v1769225753146!5m2!1sen!2sph" 
+                       width="300"
+                        height="250" 
+                        style="border:0;"
+                         allowfullscreen="" 
+                         loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+
+         else if (item === 'Jonas Creamy Halo Halo and Restaurant') {
+            content = `
+                <h1 style="color: #0c1e31; ">Jonas Creamy Halo Halo and Restaurant</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="jonas.webp" alt="Jonas Creamy Halo Halo and Restaurant"></div>
+                    <div class="info-box">
+                        <p>Juan's Famous Buko de Halo-Halo is a popular dessert spot in Brgy. Mate (Cassandra Farmville area), along 
+                            Tayabas-Pagbilao Road, Tayabas City, Quezon, renowned for its signature buko halo-halo served inside fresh
+                             coconut shells with free buko juice, alongside Filipino favorites like inasal, sisig, and kare-kare. 
+                             Open daily 9AM-10PM (contact (042) 784-7080 or +63 917 515 0323), this Instagram-famous eatery offers a
+                              cozy native kubo vibe perfect for cooling off after nearby heritage sites or farm tours.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.1086637486646!2d121.
+                      61136517506564!3d14.01157059122631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4daf7
+                      35a1c25%3A0x29a5a7640f7a4d8a!2sJonas%20Creamy%20Halo%20Halo%20and%20Restaurant!5e0!3m2!1sen!2sph!4v1769225810946!5m2!1sen!2sph"
+                       width="300" 
+                       height="250"
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                         referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Lambanog Distilleries') {
+            content = `
+                <h1 style="color: #0c1e31; ">Lambanog Distilleries</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="lamba g.png" alt="Lambanog Distilleries"></div>
+                    <div class="info-box">
+                        <p> Tayabas City, Quezon's lambanog capital, hosts around 14 traditional distilleries producing the potent coconut 
+                            spirit from fermented sap (tukil), with major ones like Mallari Distillery and Capistrano Distillery offering tours, 
+                            tastings, and sales of single/triple-distilled varieties up to 80% ABV—hangover-free and paired with local feasts. 
+                            Key spots cluster in central Tayabas (e.g., near heritage sites) and outskirts like Brgy. Maye, perfect for cultural
+                             tours blending distillery visits with Juan's Buko Halo-Halo desserts or Air Summit meals in your Sampaloc tourism project. 
+                             Distilleries emphasize organic Mt. Banahaw water processes, supporting farm-to-table itineraries near Habilin/Yumi's Farms.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30968.863110853497!2d121
+                      .59334046037179!3d14.011616551562147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d
+                      63aab6a80d%3A0x194efb76a0067026!2sCapistrano%20Distillery!5e0!3m2!1sen!2sph!4v1769225861562!5m2!1sen!2sph"
+                       width="300" 
+                       height="250"
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                         referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Hunta Cafe') {
+            content = `
+                <h1 style="color: #0c1e31; ">Hunta Cafe</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="Hunta Cafe.jpg" alt="Hunta Cafe"></div>
+                    <div class="info-box">
+                        <p> Hunta Café is a cozy garden cafe and restobar along Tayabas-Mauban Road in Brgy. Ibabang Palale, Tayabas City, Quezon, 
+                            offering alfresco dining with gourmet dishes like crispy sisig, specialty coffees, teas, cocktails, and desserts in a 
+                            spacious, breezy ambiance. Open mostly 11AM-9PM (extended weekends; closed Wednesdays sometimes), contact +63 969 531 5720;
+                             it's family-friendly, pet/wheelchair-accessible with free parking near SLSU Tayabas, perfect for relaxed "huntahan"
+                              chats post-Mainit Hotspring or basilica visits. This spot complements your Tayabas food trail—pair with lambanog 
+                              tastings, Juan's buko halo-halo, or Air Summit's plane gimmick for vibrant Calabarzon tourism visuals from Sampaloc.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.557557230638!2d121.66278817974491!3d14
+                       .044220555356906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a2ad99c8308297%3A0x78ee1e32160fa1d8!2sHunta%20
+                       Caf%C3%A9!5e0!3m2!1sen!2sph!4v1769225897778!5m2!1sen!2sph" 
+                       width="300" 
+                       height="250" 
+                       style="border:0;" 
+                       allowfullscreen="" 
+                       loading="lazy" 
+                       referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+          else if (item === 'Mothers Wonderland') {
+            content = `
+                <h1 style="color: #0c1e31; ">Mothers Wonderland</h1>
+                <div class="content-grid">
+                    <div class="photo-box"><img src="moters wonderland.webp" alt="Mothers Wonderland"></div>
+                    <div class="info-box">
+                        <p>Mother's Wonderland is a family-oriented theme park and nature retreat along the Pan-Philippine Highway (Maharlika Hwy) in 
+                            Brgy. Calumpang, Tayabas City, Quezon, featuring Quezon's tallest statue (Mother Gaia at 35m for 360° Mt. Banahaw views), 
+                            horseback riding, hanging bridges, ziplines, playgrounds, live shows, and picnic areas. Open Thu-Sun 10:30AM-8PM 
+                            (adult day pass ~PHP 950 including free activities; kids 3-4ft PHP 500, under 3ft free), it's wheelchair-accessible with on-site parking,
+                             locally sourced dining, and kid-friendly vibes rated 4.6/5—ideal for group outings near lambanog distilleries or Hunta Café.
+                              Contact +63 949 879 4919 or enjoy@motherswonderland.com; pairs well with your Tayabas cluster for full-day heritage-nature itineraries 
+                              from Sampaloc, blending thrills with serene farm/resort hops.</p>
+                    </div>
+                </div>
+                      <div class="map-section" style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <div class="map-box" style="width: 450px; text-align: right;">
+                    <strong>Location Map:</strong><br><br>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.8586227612136!2d121.54912567506489!3d13.
+                       9670195922744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4d9326c9dca1%3A0xf7dfea3e56417d45!2sMother&#39;
+                       s%20Wonderland!5e0!3m2!1sen!2sph!4v1769225955346!5m2!1sen!2sph" 
+                       width="300" 
+                       height="250" 
+                       style="border:0;"
+                        allowfullscreen=""
+                         loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+             
+            `;
+        }
+        displayArea.innerHTML = content;
+    }
+</script>
+
+
+</body>
+</html>
