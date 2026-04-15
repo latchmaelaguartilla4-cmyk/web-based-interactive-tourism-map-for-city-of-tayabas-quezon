@@ -185,3 +185,77 @@
         padding-bottom: 40px;
     }
 }
+
+/* --- ILAGAY ITO SA PINAKABABA NG IYONG CSS FILE --- */
+
+@media (max-width: 768px) {
+    /* 1. Gawing Vertical ang layout ng buong page */
+    .wrapper {
+        flex-direction: column;
+        height: auto;
+    }
+
+    /* 2. Gawing Top Navbar ang Sidebar */
+    .side-navbar, .sidebar {
+        width: 100% !important;
+        height: auto !important;
+        position: relative !important; /* Hindi na siya stick sa gilid */
+        padding: 20px 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center;
+        gap: 10px !important;
+    }
+
+    /* 3. Ayusin ang Logo para hindi masyadong malaki */
+    .logo-box, .nav-logo {
+        margin-bottom: 10px !important;
+        width: 100px !important; /* Liitan ang logo sa mobile */
+        height: auto;
+    }
+
+    /* 4. I-horizontal o gawing malinis ang Menu Links */
+    .nav-menu, .sidebar ul {
+        display: flex;
+        flex-direction: row; /* Pagilid ang mga menu item */
+        flex-wrap: wrap;    /* Kung marami, bababa kusa */
+        justify-content: center;
+        padding: 10px 0 !important;
+        width: 100%;
+    }
+
+    .nav-menu li, .sidebar li {
+        margin: 0 10px !important; /* Space sa pagitan ng Home, About, etc. */
+        padding: 10px 5px !important;
+        border-bottom: none !important;
+    }
+
+    .nav-item {
+        font-size: 0.9rem !important; /* Liitan ang font para magkasya sa screen */
+        padding: 5px 10px !important;
+    }
+
+    /* 5. Ayusin ang Main Content para makita ang laman */
+    .main-content {
+        width: 100%;
+        padding: 20px !important;
+        overflow-x: hidden; /* Iwasan ang pag-alog pakaliwa-pakanan */
+    }
+
+    /* 6. Tanggalin ang malalaking indent at margin na pang-desktop */
+    .history-para {
+        text-indent: 20px !important;
+        margin-top: 20px !important;
+        padding: 0 10px;
+    }
+
+    .white-box {
+        margin: 10px !important;
+        padding-left: 15px !important; /* Iwasan ang sobrang laking padding sa kaliwa */
+        height: auto !important;
+    }
+
+    .festival-title {
+        font-size: 1.5rem !important;
+    }
+}
