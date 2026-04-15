@@ -10,18 +10,20 @@
 
 </head>
 <body>
-   <div class="card text-bg-dark">
+    <div class="card text-bg-dark">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
         <div class="container-fluid">
-           
+            <!-- Logo -->
             <a class="navbar-brand" href="#">
                 <img src="logo.png" alt="Logo" width="150" height="100" class="img-fluid">
             </a>
-                       
+            
+            <!-- Toggler for mobile -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
+            <!-- Navigation Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -38,7 +40,6 @@
         </div>
     </nav>
 </div>
-
 <div class="wrapper">
     <aside class="sidebar">
         <ul>
@@ -74,7 +75,7 @@
         } else if (type === 'mustbuy') {
             title = "Must Buy";
             items = `<div class="list-item" onclick="showDetails('budin', 'mustbuy')">Budin</div>
-              <div class="list-item" onclick="showDetails('Yema Ckae', 'mustbuy')">Yema Cake</div>
+              <div class="list-item" onclick="showDetails('Yema Cake', 'mustbuy')">Yema Cake</div>
                 <div class="list-item" onclick="showDetails('Minukmok', 'mustbuy')">Minukmok</div>
                 <div class="list-item" onclick="showDetails('Suman', 'mustbuy')">Suman</div>
                 <div class="list-item" onclick="showDetails('Handicrafts', 'mustbuy')">Handicrafts</div>`;
