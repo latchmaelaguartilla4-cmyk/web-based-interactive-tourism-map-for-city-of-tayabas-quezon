@@ -351,3 +351,58 @@ p {
             cursor: pointer;
             margin-top: 20px;
         }
+/* --- MOBILE FIX PARA SA SIDEBAR AT MENU --- */
+
+@media (max-width: 768px) {
+    /* 1. Alisin ang pagka-flex ng wrapper para hindi magkatabi ang sidebar at content */
+    .wrapper {
+        display: block !important;
+        height: auto !important;
+    }
+
+    /* 2. Ayusin ang Sidebar para maging full width at hindi nakaharang */
+    .sidebar, .side-navbar {
+        width: 100% !important;
+        height: auto !important;
+        position: relative !important; /* Binago mula fixed/sticky para hindi humarang */
+        padding: 20px !important;
+        min-width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    /* 3. Siguraduhin na ang menu links ay pwedeng pindutin */
+    .nav-menu, .sidebar ul {
+        width: 100%;
+        padding: 0 !important;
+        text-align: center;
+    }
+
+    .nav-menu li, .sidebar li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding: 15px 0 !important;
+    }
+
+    /* 4. Ayusin ang Main Content para bumaba siya sa ilalim ng sidebar */
+    .main-content {
+        width: 100% !important;
+        padding: 20px !important;
+        margin-top: 0 !important;
+        background-color: white;
+    }
+
+    /* 5. Kung may "tatlong guhit" button ka (hamburger icon), siguruhing hindi ito natatakpan */
+    .hamburger-menu { /* palitan mo ang class name kung iba ang gamit mo */
+        z-index: 1000;
+        cursor: pointer;
+    }
+
+    /* 6. Tanggalin ang mga fixed heights sa mga container */
+    .white-box {
+        height: auto !important;
+        padding: 20px !important;
+        margin: 10px 0 !important;
+    }
+}
