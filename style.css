@@ -351,26 +351,3 @@ p {
             cursor: pointer;
             margin-top: 20px;
         }
-        /* RESPONSIVE FIXES */
-@media (max-width: 768px) {
-    /* 1. Stack the layout */
-    .wrapper { flex-direction: column; height: auto; }
-    
-    /* 2. Adjust Sidebar */
-    .sidebar { width: 100%; min-width: 100%; height: auto; position: relative; padding: 20px; }
-    .nav-menu { padding: 10px; }
-    .nav-menu li { margin-bottom: 10px; } /* Iwasan ang sobrang laking margin sa mobile */
-    .nav-item { padding: 15px; }
-
-    /* 3. Adjust Content Grid */
-    .content-grid { flex-direction: column; gap: 20px; }
-    .photo-box img { width: 100%; }
-
-    /* 4. Fix Text Spacing */
-    .white-box { padding-left: 20px; height: auto; padding-top: 40px; padding-bottom: 40px; }
-    .history-para { text-indent: 2rem; margin-top: 2rem; }
-    
-    /* 5. Map Fix */
-    .map-section { justify-content: center; }
-    .map-box { width: 100%; text-align: center; }
-}
