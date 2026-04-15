@@ -80,7 +80,7 @@
 }
 
 .title {
-    color: #cc0000;
+    color: lab(25.52% 22.21 10.22);
     font-size: 2.5rem;
     margin-bottom: 40px;
     width: 100%;
@@ -95,7 +95,7 @@
 }
 
 h1 {
-    color: #cc0000; /* Red header color */
+    color: #361b1b; /* Red header color */
     margin-bottom: 50px;
     letter-spacing: 2px;
 }
@@ -147,7 +147,7 @@ p {
 }
 
 /* Optional: Make logos smaller on mobile */
-@media (max-width: 600px) {
+@media (max-width: 500px) {
     .logo {
         max-height: 50px;
     }
@@ -311,7 +311,7 @@ p {
         }
 
         .photo-box img {
-            width: 450px;
+            width: auto;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -351,58 +351,3 @@ p {
             cursor: pointer;
             margin-top: 20px;
         }
-/* --- MOBILE FIX PARA SA SIDEBAR AT MENU --- */
-
-@media (max-width: 768px) {
-    /* 1. Alisin ang pagka-flex ng wrapper para hindi magkatabi ang sidebar at content */
-    .wrapper {
-        display: block !important;
-        height: auto !important;
-    }
-
-    /* 2. Ayusin ang Sidebar para maging full width at hindi nakaharang */
-    .sidebar, .side-navbar {
-        width: 100% !important;
-        height: auto !important;
-        position: relative !important; /* Binago mula fixed/sticky para hindi humarang */
-        padding: 20px !important;
-        min-width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-    }
-
-    /* 3. Siguraduhin na ang menu links ay pwedeng pindutin */
-    .nav-menu, .sidebar ul {
-        width: 100%;
-        padding: 0 !important;
-        text-align: center;
-    }
-
-    .nav-menu li, .sidebar li {
-        width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        padding: 15px 0 !important;
-    }
-
-    /* 4. Ayusin ang Main Content para bumaba siya sa ilalim ng sidebar */
-    .main-content {
-        width: 100% !important;
-        padding: 20px !important;
-        margin-top: 0 !important;
-        background-color: white;
-    }
-
-    /* 5. Kung may "tatlong guhit" button ka (hamburger icon), siguruhing hindi ito natatakpan */
-    .hamburger-menu { /* palitan mo ang class name kung iba ang gamit mo */
-        z-index: 1000;
-        cursor: pointer;
-    }
-
-    /* 6. Tanggalin ang mga fixed heights sa mga container */
-    .white-box {
-        height: auto !important;
-        padding: 20px !important;
-        margin: 10px 0 !important;
-    }
-}
