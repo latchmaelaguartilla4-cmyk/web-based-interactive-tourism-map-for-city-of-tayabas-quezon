@@ -140,10 +140,16 @@ display: flex;
 flex-wrap: wrap;
 justify-content: center;
 gap: 20px;
+    align-items: center;         /* Aligns logos vertically in the middle */
+    margin-bottom: 40px;         /* Space between logos and the title */
+    flex-wrap: wrap;             /* Allows them to stack on small screens */
 }
 .logo {
 max-width: 100%; /* Para hindi lumampas ang image sa screen */
 height: auto;
+    max-height: 100%;          
+    width: auto;                 /* Maintains original aspect ratio */
+    margin: 10px;
 }
 
 /* Optional: Make logos smaller on mobile */
