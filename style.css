@@ -1,123 +1,376 @@
-/* --- Global Resets --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* --- Typography (Responsive) --- */
 .text-center {
-    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Lumiliit base sa screen size */
-    font-weight: 700;
-    color: #2c1810;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    margin: 1rem 0;
-    padding: 0 15px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c1810; /* Earthy brown from Filipino heritage palettes */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  margin: 1rem 0;
 }
 
 .history-para {
-    text-align: justify; 
-    line-height: 1.7; 
-    margin: 2rem auto;
-    width: 90%; /* Hindi na 100% para may padding sa gilid */
-    max-width: 1200px;
-    text-indent: 5rem; /* Binawasan mula 10rem para sa mobile */
+  text-align: left; 
+   text-indent: 10rem; 
+  line-height: 1.7; 
+   margin-top: 5rem; 
+  width: 100%;
+  height: auto;
+  border-radius: 10px; 
+}
+@media (min-width: 768px) {
+  .history-para {
+    text-align: justify;
+  }
+}
+.map-container {
+    width: 100%;
+    height: 400px;
+    background-color: #f0f0f0; /* Placeholder color */
 }
 
-@media (max-width: 768px) {
-    .history-para {
-        text-indent: 2rem; /* Mas maliit na indent sa mobile */
-        margin-top: 2rem;
-        text-align: left;
-    }
+.map-container {
+    width: 100%;
+    height: 400px;
+    background-color: #f0f0f0; /* Placeholder color */
 }
 
-/* --- Iframe/Map Fix --- */
-iframe {
-    width: 100% !important; /* Pinaka-importante para sa mobile */
-    max-width: 100%;
-    height: 450px;
+/* Moving the text down from the map */
+.history-content {
+    margin-top: 60px; /* Increase this to move text further down */
+    padding: 0 10%;  /* Keeps text from touching the screen edges */
+    line-height: 1.8; /* Makes the long paragraph easier to read */
+    text-align: justify;
+    color: #444;
 }
 
-@media (max-width: 600px) {
-    iframe {
-        height: 300px; /* Mas maliit na height sa phone */
-    }
-}
-
-/* --- Footer (Fixed Widths) --- */
+/* Footer Layout (Multi-column) */
 .site-footer {
     display: flex;
     justify-content: space-around;
-    padding: 40px 5%;
+    padding: 50px 5%;
     background-color: #f9f9f9;
     border-top: 1px solid #ddd;
+    margin-top: 100px;
+}
+
+.footer-column h3 {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.footer-column p, .footer-column li {
+    font-size: 12px;
+    color: #666;
+    list-style: none;
+}
+.footer-column{
+    width: 500%;       /* Resizes to fit the container */
+    max-width: 600px;  /* Prevents it from getting too large */
+    height: auto;      /* Maintains original aspect ratio */
+}
+
+.main-emergency-container {
+    display: flex;
+    flex-direction: column; /* Stacks title on top of columns */
+    align-items: center;    /* Horizontal centering */
+    text-align: center;     /* Centers the text inside tags */
+    width: 100%;
     margin-top: 50px;
-    flex-wrap: wrap; 
-    gap: 20px;
 }
 
-.footer-column {
-    flex: 1 1 250px; /* Flexible: min 250px bago bumaba */
-    max-width: 400px;
-    margin-bottom: 20px;
+.title {
+    color: #cc0000;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    width: 100%;
 }
-
-.footer-column img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* --- Emergency Hotlines --- */
 .container {
     background-color: white;
-    width: 95%; /* Ginawang 95% para sa mobile */
+    width: 80%;
     max-width: 900px;
-    padding: 20px;
-    margin: 20px auto;
+    padding: 40px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     text-align: center;
 }
 
+h1 {
+    color: #cc0000; /* Red header color */
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+}
+
 .hotline-wrapper {
     display: flex;
-    flex-wrap: wrap; /* Para mag-stack sa mobile */
     justify-content: space-between;
-    gap: 20px;
+    text-align: center;
 }
 
 .column {
-    flex: 1 1 300px; /* Magiging full width kapag kulang ang space */
+    flex: 1; /* Makes both columns equal width */
 }
 
+section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+p {
+    margin: 4px 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Responsive adjustment for mobile screens */
 @media (max-width: 600px) {
     .hotline-wrapper {
         flex-direction: column;
     }
-    h1 { font-size: 1.5rem; }
 }
-
-/* --- Logos Row --- */
 .logo-row {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
+    justify-content: space-around; /* Distributes logos evenly */
+    align-items: center;         /* Aligns logos vertically in the middle */
+    margin-bottom: 40px;         /* Space between logos and the title */
+    flex-wrap: wrap;             /* Allows them to stack on small screens */
 }
 
 .logo {
-    max-height: 60px;
-    width: auto;
-    object-fit: contain;
+    max-height: 50px;            /* Keeps all logos at a consistent height */
+    width: auto;                 /* Maintains original aspect ratio */
+    margin: 10px;
 }
 
-/* --- Navbar Adjustments --- */
-.navbar-brand img {
-    max-width: 120px; /* Resize logo sa mobile */
+/* Optional: Make logos smaller on mobile */
+@media (max-width: 600px) {
+    .logo {
+        max-height: 50px;
+    }
+}
+
+/* Sidebar Container */
+.side-navbar {
+    width: auto;
+    min-width: auto;
+    flex-shrink: 0;
+    position:sticky;
+    height: 100vh;
+    top: 0;
+    background: linear-gradient(180deg, #1f2227 0%, #1f2227 100%);
+    padding : 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap:20px;
+    box-shadow: 2px 0 10px rgba(241, 241, 241, 0.3);
+
+}
+
+/* Logo Styling */
+.logo-box {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.nav-logo {
+    width: auto;
     height: auto;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Menu Styling */
+.nav-menu {
+    list-style: none;
+    padding: 50px 30px;
+}
+
+.nav-menu li {
+    margin-bottom: auto; /* Spacing between items */
+}
+
+.nav-item {
+    text-decoration:hsl(from color h s l);
+    color: #94a3b8; /* Muted grey/blue color from the image */
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease;
+    display: block;
+     padding: 40px 15px;
+}
+
+
+/* Hover State */
+.nav-item:hover {
+    color: #ffffff; /* Bright white on hover */
+    transform: translateX(10px); /* Subtle slide effect */
+}
+
+/* Active State (Optional) */
+.nav-item.active {
+    color: #ffffff;
+}
+
+/* Styling for the White Box */
+.white-box {
+    background-color: #e2e8f0; /* Light grey/white color from pic */
+    margin: 20px;
+    height: 80vh;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 60px; /* Moves text to the left side of the box */
+}
+
+/* Styling for the Festival Names */
+.festival-content {
+    text-align: left;
+}
+
+.festival-title {
+    color: #4a5568; /* Muted dark grey */
+    font-size: 2.5rem;
+    font-weight: 300; /* Light font weight like in the photo */
+    margin-bottom: 30px;
+    font-family: sans-serif;
+}
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .wrapper {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* SIDEBAR: Naka-lock ang width nito para hindi umuusog */
+        .sidebar {
+            width: auto;
+            min-width:  auto; /* Lock ang laki */
+            flex-shrink: 0;   /* Pinipigilan ang pag-ipit ng sidebar */
+            background-color: #171b1f; /* Dark blue */
+            color: white;
+            padding: 50px 20px;
+            justify-content: flex-start;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            padding: 40px 2px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .sidebar li:hover {
+            background-color: #171b1f;
+        }
+
+        /* MAIN CONTENT: Dito lumalabas ang listahan at details */
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto; /* Dito lang mag-scroll kung mahaba ang content */
+            background-color: #f9f9f9;
+        }
+
+        /* Style para sa mga Listahan */
+        .list-container h1 { margin-bottom: 20px; color: #0c1e31; }
+        .list-item {
+            font-size: 1.2rem;
+            padding: 10px 0;
+            cursor: pointer;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+        }
+        .list-item:hover { color: #002D62; padding-left: 10px; transition: 0.2s; }
+
+        /* Style para sa Details (Photo, Info, Map) */
+        .details-container h1 { color: #0b213d; margin-bottom: 20px; }
+        
+        .content-grid {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .photo-box img {
+            width: 450px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .info-box {
+            flex: 1;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Map positioning sa kanang bahagi sa baba */
+        .map-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 40px;
+        }
+
+        .map-box {
+            width:  auto;
+            text-align: right;
+        }
+
+        .map-img {
+            width: auto;
+            height: auto;
+            border: 3px solid #ddd;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .back-btn {
+           
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        /* RESPONSIVE FIXES */
+@media (max-width: 768px) {
+    /* 1. Stack the layout */
+    .wrapper { flex-direction: column; height: auto; }
+    
+    /* 2. Adjust Sidebar */
+    .sidebar { width: 100%; min-width: 100%; height: auto; position: relative; padding: 20px; }
+    .nav-menu { padding: 10px; }
+    .nav-menu li { margin-bottom: 10px; } /* Iwasan ang sobrang laking margin sa mobile */
+    .nav-item { padding: 15px; }
+
+    /* 3. Adjust Content Grid */
+    .content-grid { flex-direction: column; gap: 20px; }
+    .photo-box img { width: 100%; }
+
+    /* 4. Fix Text Spacing */
+    .white-box { padding-left: 20px; height: auto; padding-top: 40px; padding-bottom: 40px; }
+    .history-para { text-indent: 2rem; margin-top: 2rem; }
+    
+    /* 5. Map Fix */
+    .map-section { justify-content: center; }
+    .map-box { width: 100%; text-align: center; }
 }
