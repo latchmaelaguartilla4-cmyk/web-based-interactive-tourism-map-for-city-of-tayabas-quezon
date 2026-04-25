@@ -65,8 +65,8 @@
     list-style: none;
 }
 .footer-column{
-    width: 500%;       /* Resizes to fit the container */
-    max-width: 600px;  /* Prevents it from getting too large */
+    width: 100%;       /* Resizes to fit the container */
+    max-width: auto;  /* Prevents it from getting too large */
     height: auto;      /* Maintains original aspect ratio */
 }
 
