@@ -134,25 +134,50 @@ p {
 }
 .logo-row {
     display: flex;
-    justify-content: space-around; /* Distributes logos evenly */
-    align-items: center;         /* Aligns logos vertically in the middle */
-    margin-bottom: 40px;         /* Space between logos and the title */
-    flex-wrap: wrap;             /* Allows them to stack on small screens */
+    justify-content: center; /* Ginawang center para mas solid ang tingin sa mobile */
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap; 
+    gap: 30px; /* Mas mainam gamitin ang gap kaysa space-around para sa control */
+    padding: 0 20px;
 }
 
 .logo {
-    max-height: 50px;            /* Keeps all logos at a consistent height */
-    width: auto;                 /* Maintains original aspect ratio */
-    margin: 10px;
+    max-height: 80px; /* Default height para sa desktop */
+    width: auto;
+    transition: transform 0.3s ease;
+    object-fit: contain;
 }
 
-/* Optional: Make logos smaller on mobile */
-@media (max-width: 600px) {
+/* Hover effect para sa desktop (optional) */
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 768px) {
+    .logo-row {
+        gap: 20px; /* Mas maliit na gap sa tablet/phone */
+        margin-bottom: 30px;
+    }
+    
     .logo {
-        max-height: 50px;
+        max-height: 60px; /* Binawasan ang laki para kumasya sa mobile */
     }
 }
 
+@media (max-width: 480px) {
+    .logo-row {
+        /* Sa sobrang liliit na phone, pwedeng 2 column o 1 column stack */
+        gap: 15px;
+    }
+    
+    .logo {
+        max-height: 50px; /* Mas maliit pa para sa small mobile screens */
+        margin: 5px;
+    }
+}
 /* Sidebar Container */
 .side-navbar {
     width: auto;
