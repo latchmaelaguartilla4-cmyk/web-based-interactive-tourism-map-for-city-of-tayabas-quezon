@@ -135,18 +135,15 @@ p {
         flex-direction: column;
     }
 }
-.logo-row {
-    display: flex;
-    justify-content: space-around; /* Distributes logos evenly */
-    align-items: center;         /* Aligns logos vertically in the middle */
-    margin-bottom: 40px;         /* Space between logos and the title */
-    flex-wrap: wrap;             /* Allows them to stack on small screens */
+   .logo-row {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
 }
-
 .logo {
-    max-height: 50px;            /* Keeps all logos at a consistent height */
-    width: auto;                 /* Maintains original aspect ratio */
-    margin: 10px;
+max-width: 100%; /* Para hindi lumampas ang image sa screen */
+height: auto;
 }
 
 /* Optional: Make logos smaller on mobile */
