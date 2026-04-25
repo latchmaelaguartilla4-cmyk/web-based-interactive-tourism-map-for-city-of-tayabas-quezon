@@ -22,17 +22,7 @@
     text-align: justify;
   }
 }
-.responsive-map {
-    width: 100%;    /* Sasakop sa buong lapad ng screen */
-    height: 550px;  /* Default height para sa desktop */
-}
 
-/* Kapag ang screen ay mas maliit sa 768px (Mobile/Tablet) */
-@media (max-width: 768px) {
-    .responsive-map {
-        height: 350px; /* Mas maliit na height para hindi nakakangalay i-scroll sa phone */
-    }
-}
 .map-container {
     width: 100%;
     height: 400px;
